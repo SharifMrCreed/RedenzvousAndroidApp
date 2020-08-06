@@ -1,0 +1,20 @@
+<resources>
+
+    <string name="app_name">RESTAURANT</string>
+    <string name="texthere">Logo Goes Here</string>
+    <string name="create">Create Account</string>
+    <string name="enter_password">Password</string>
+    <string name="SLOGAN">look at the Hotel or restaurant\'s menu, their atmosphere, then book a reservation</string>
+    <string name="title_activity_sign_in">Sign In</string>
+
+    <string name="enter_id_number">Enter Id Number</string>
+    <string name="forgot_password_click_here">Forgot Password? Click here</string>
+    <string name="title_activity_sign_up">Sign Up</string>
+    <string name="create_id_number">Enter Full Names</string>
+    <string name="enter_email_address">Enter Email Address</string>
+    <string name="create_password">Create Password</string>
+    <string name="reenter_password">Re-Enter Password</string>
+    <string name="have_an_account_sign_in">Have an account? Sign In</string>
+    <string name="saveToast">Account Created</string>
+    <string name="sign_in_with_google">Sign In With Google</string>
+</resources>
