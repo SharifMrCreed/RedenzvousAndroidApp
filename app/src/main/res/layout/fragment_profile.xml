@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".profileViews.ProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:padding="20dp"
+            android:background="@color/colorAccent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/userProfileImage"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.LowerRoundCorners"
+                android:src="@drawable/allecon"
+                android:layout_marginTop="20dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_toEndOf="@+id/userProfileImage"
+                android:layout_toRightOf="@+id/userProfileImage"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/displayNames"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/alegreya"
+                    android:text="Display Name"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="5dp"/>
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/alegreya"
+                    android:text="User Name"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="-100dp"
+            android:padding="10dp">
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                app:cardElevation="10dp"
+                app:cardCornerRadius="4dp"
+                app:cardBackgroundColor="@color/colorPrimary">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+
+                        android:src="@drawable/beenhere"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8"
+                        android:textColor="@color/white"
+                        android:textSize="35sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Visited"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                app:cardElevation="10dp"
+                app:cardCornerRadius="4dp"
+                app:cardBackgroundColor="@color/colorPrimary">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/restaurant"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="23"
+                        android:textSize="35sp"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dishes"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fullName_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginEnd="20dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fullName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:background="@android:color/transparent"
+                android:drawableStart="@drawable/person_icon"
+                android:drawableLeft="@drawable/person_icon"
+                android:drawablePadding="10dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etPerEmail_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="fullname@email.com"
+            android:autofillHints="Email"
+            app:hintTextColor="@color/white"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginEnd="20dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPerEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:background="@android:color/transparent"
+                android:drawableStart="@drawable/email_icon"
+                android:drawableLeft="@drawable/email_icon"
+                android:drawablePadding="10dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etPerPassword_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="**********"
+            app:hintTextColor="@color/white"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginEnd="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPerPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:background="@android:color/transparent"
+                android:drawableStart="@drawable/lock_icon"
+                android:drawableLeft="@drawable/lock_icon"
+                android:drawablePadding="10dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/PerRePassword_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="**********"
+            app:hintTextColor="@color/white"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginEnd="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPerRePassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:background="@android:color/transparent"
+                android:drawableStart="@drawable/lock_icon"
+                android:drawableLeft="@drawable/lock_icon"
+                android:drawablePadding="10dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btncreate_account"
+            android:layout_width="match_parent"
+            android:layout_margin="20dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_shape"
+            android:padding="8dp"
+            android:text="Update"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:cornerRadius="4dp" />
+
+    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/signUpProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="500dp"
+        android:layout_marginStart="170dp"
+        android:layout_marginLeft="170dp" />
+
+
+
+</RelativeLayout>

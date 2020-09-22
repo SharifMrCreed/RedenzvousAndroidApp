@@ -1,4 +1,4 @@
-package com.alle.san.restaurant;
+package com.alle.san.restaurant.homeViews;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,10 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class PartyFragment extends Fragment {
+import com.alle.san.restaurant.R;
+
+public class PicksFragment extends Fragment {
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.party_fragment, container,false);
+        return inflater.inflate(R.layout.picks_fragment, container, false);
     }
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/the"
-    tools:context=".SignInActivity">
+    tools:context=".profileViews.SignInFragment">
 
 
     <TextView
@@ -27,72 +27,81 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <info.hoang8f.widget.FButton
+    <Button
         android:id="@+id/bSignIn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="@drawable/button_shape"
+        android:textColor="@color/white"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
-        android:backgroundTint="#2c2d2e"
         android:text="@string/common_signin_button_text"
         android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/password_layout" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="0dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/username_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/email_address"
         android:layout_below="@+id/name"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:autofillHints="username"
-        android:background="#ffffff"
-        android:ems="10"
-        android:hint="@string/enter_id_number"
-        android:padding="4dp"
-        android:inputType="textPersonName"
-        android:textColor="@android:color/black"
-        android:textColorHint="@android:color/black"
-        android:textSize="20sp"
-        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        app:layout_constraintTop_toBottomOf="@+id/name" >
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="0dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@drawable/email_icon"
+            android:drawableStart="@drawable/email_icon"
+            android:drawablePadding="10dp"
+            android:inputType="text"
+            android:paddingLeft="8dp"
+            android:paddingStart="8dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/name"
+        android:hint="@string/enter_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username_layout"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:autofillHints="password"
-        android:padding="4dp"
-        android:textColor="@android:color/black"
-        android:textColorHint="@android:color/black"
-        android:background="@android:color/white"
-        android:ems="10"
-        android:hint="@string/enter_password"
-        android:inputType="textPassword"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        android:layout_marginRight="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:background="@android:color/transparent"
+            android:paddingLeft="8dp"
+            android:paddingStart="8dp"
+            android:drawableLeft="@drawable/lock_icon"
+            android:drawableStart="@drawable/lock_icon"
+            android:drawablePadding="10dp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/forgot_password"

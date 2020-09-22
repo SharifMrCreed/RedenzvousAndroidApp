@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "491308916227",
+    "firebase_url": "https://weeat-54733.firebaseio.com",
+    "project_id": "weeat-54733",
+    "storage_bucket": "weeat-54733.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:491308916227:android:1fe676d74d2ebe80377836",
+        "android_client_info": {
+          "package_name": "com.alle.san.restaurant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "491308916227-e98b8did5gv11mppd8n6e56jdvtjve8f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkX44P6pmc5DwE00ZWgQF6sExr-U_UJKI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "491308916227-e98b8did5gv11mppd8n6e56jdvtjve8f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

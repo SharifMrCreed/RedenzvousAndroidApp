@@ -1,4 +1,4 @@
-package com.alle.san.restaurant;
+package com.alle.san.restaurant.models;
 
 public class Person {
 

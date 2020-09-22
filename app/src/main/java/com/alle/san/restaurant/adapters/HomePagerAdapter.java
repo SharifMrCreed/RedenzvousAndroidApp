@@ -1,6 +1,5 @@
-package com.alle.san.restaurant;
+package com.alle.san.restaurant.adapters;
 
-import android.content.Context;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
@@ -8,9 +7,12 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.alle.san.restaurant.R;
+import com.alle.san.restaurant.homeViews.FeedFragment;
+import com.alle.san.restaurant.homeViews.PartyFragment;
+import com.alle.san.restaurant.homeViews.PicksFragment;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.Objects;
@@ -31,13 +33,10 @@ public class HomePagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                Objects.requireNonNull(tabLayout.getTabAt(0)).setIcon(R.drawable.foodies);
-                return new FeedsFragment();
+                return new FeedFragment();
             case 1:
-                Objects.requireNonNull(tabLayout.getTabAt(1)).setIcon(R.drawable.places);
                 return new PicksFragment();
             case 2:
-                Objects.requireNonNull(tabLayout.getTabAt(2)).setIcon(R.drawable.partyy);
                 return new PartyFragment();
             default:
                 return null;
