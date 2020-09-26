@@ -1,8 +1,10 @@
 package com.alle.san.restaurant.homeViews;
 
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +41,7 @@ public class FeedFragment extends Fragment {
     static ArrayList<FoodItem> listOfFoods = new ArrayList<>();
 
    static String results;
+    private SharedPreferences preferences;
 
     @Nullable
     @Override
@@ -48,10 +51,17 @@ public class FeedFragment extends Fragment {
         progressBar = view.findViewById(R.id.feedsProgressBar);
 
         ApiUtil apiUtil = new ApiUtil();
+        preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
         try {
             URL url = apiUtil.searchFor("beef");
-            apiUtil.execute(url);
+            String savedResults = preferences.getString("Result", null);
+            if (savedResults == null){
+                apiUtil.execute(url);
+                Log.d(TAG, "onCreateView:  Results were null");
+            }else{
+                showResult(savedResults);
+            }
 
             Log.d(TAG, "onCreateView:  "+ listOfFoods.toString());
 
@@ -70,7 +80,7 @@ public class FeedFragment extends Fragment {
         public static final String QUERY_PARAMETER = "query";
         public static final String KEY = "apiKey";
         public static final String NUMBER = "number";
-        public static final String TOTAL_RESULTS = "100";
+        public static final String TOTAL_RESULTS = "500";
 
         public URL searchFor(String searchQuery) throws MalformedURLException {
 
@@ -118,16 +128,40 @@ public class FeedFragment extends Fragment {
 
         @Override
         protected void onPostExecute(String jsonResult) {
+
+            preferences.getString("Results", jsonResult);
             Log.d(TAG, "onPostExecute: \n" + jsonResult);
             progressBar.setVisibility(View.GONE);
-            try {
-                listOfFoods = ParseMenuItem.menuItems(jsonResult);
-                feedsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-                feedsRecyclerView.setAdapter(new FeedsRvAdapter(listOfFoods, getContext()));
-                
-            } catch (JSONException e) {
-                e.printStackTrace();
+
+            showResult(jsonResult);
+
+        }
+    }
+
+    private void showResult(String jsonResult) {
+        try {
+            listOfFoods = ParseMenuItem.menuItems(jsonResult);
+            ArrayList<FoodItem> displayList = new ArrayList<>();
+            for(int i=0; i<listOfFoods.size(); i++){
+                FoodItem item = listOfFoods.get(i);
+                if (displayList.isEmpty()){
+                    displayList.add(item);
+                }
+                if (!displayList.isEmpty()){
+                    for (int j=0; j<displayList.size(); j++){
+                        FoodItem foodItem = displayList.get(displayList.size()-1);
+                        if(!foodItem.getRestaurantName().equals(item.getRestaurantName())){
+                            displayList.add(item);
+                        }
+                    }
+                }
+
             }
+            feedsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+            feedsRecyclerView.setAdapter(new FeedsRvAdapter(displayList, getContext()));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 }
