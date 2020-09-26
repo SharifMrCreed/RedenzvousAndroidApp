@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:padding="20dp"
-            android:background="@color/colorAccent">
+            android:background="@drawable/gradient_shape_sam">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/userProfileImage"
@@ -42,18 +42,16 @@
                     android:id="@+id/displayNames"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/alegreya"
                     android:text="Display Name"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     android:layout_marginBottom="5dp"/>
                 <TextView
                     android:id="@+id/userName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/alegreya"
                     android:text="User Name"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     />
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/the"
+    android:background="@drawable/gradient_shape"
     tools:context=".profileViews.SignInFragment">
 
 
@@ -58,6 +58,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        app:hintTextColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" >
@@ -84,6 +85,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username_layout"
+        app:hintTextColor="@color/colorPrimaryDark"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
@@ -111,7 +113,7 @@
         android:background="@android:color/transparent"
         android:text="@string/forgot_password_click_here"
         android:textAllCaps="false"
-        android:textColor="#e4eb8a"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -20,12 +20,12 @@ public class PlaceUtil {
         String fiveLocale = Uri.parse("android.resource://com.alle.san.restaurant/" + R.drawable.ae).toString();
         String sixLocale = Uri.parse("android.resource://com.alle.san.restaurant/" + R.drawable.af).toString();
 
-        PlaceModel placeOne = new PlaceModel("Place One", "Location", oneLocale);
-        PlaceModel placeTwo = new PlaceModel("Place One", "Location", twoLocale);
-        PlaceModel placeThree = new PlaceModel("Place One", "Location", threeLocale);
-        PlaceModel placeFour = new PlaceModel("Place One", "Location", fourLocale);
-        PlaceModel placeFive = new PlaceModel("Place One", "Location", fiveLocale);
-        PlaceModel placeSix = new PlaceModel("Place One", "Location", sixLocale);
+        PlaceModel placeOne = new PlaceModel("Arcadia", "Location", oneLocale);
+        PlaceModel placeTwo = new PlaceModel("Atlantis", "Location", twoLocale);
+        PlaceModel placeThree = new PlaceModel("Tantalus", "Location", threeLocale);
+        PlaceModel placeFour = new PlaceModel("Chaldea", "Location", fourLocale);
+        PlaceModel placeFive = new PlaceModel("Olympus", "Location", fiveLocale);
+        PlaceModel placeSix = new PlaceModel("Kalybdie", "Location", sixLocale);
 
         for (int i = 0; i<5; i++){
             places.add(placeOne);

@@ -23,7 +23,7 @@
             android:textSize="18sp"
             android:text="Food Name"
             android:layout_margin="8dp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/colorPrimaryDark"/>
     </LinearLayout>
 
     <com.google.android.material.card.MaterialCardView
@@ -54,7 +54,7 @@
             android:textSize="18sp"
             android:text="at"
             android:layout_margin="8dp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/colorPrimaryDark"/>
 
         <TextView
             android:id="@+id/tvPlaceName"
@@ -63,7 +63,7 @@
             android:textSize="18sp"
             android:text="Place Name"
             android:layout_margin="8dp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/colorPrimaryDark"/>
     </LinearLayout>
 
 
