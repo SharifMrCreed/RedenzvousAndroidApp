@@ -11,17 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alle.san.restaurant.R;
+import com.alle.san.restaurant.models.AdModel;
 import com.alle.san.restaurant.models.PlaceModel;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class PlacesRvAdapter extends RecyclerView.Adapter<PlacesRvAdapter.PlaceViewHolder> {
+public class AdRvAdapter extends RecyclerView.Adapter<AdRvAdapter.PlaceViewHolder> {
 
-    ArrayList<PlaceModel> placeItems;
+    ArrayList<AdModel> placeItems;
     Context context;
 
-    public PlacesRvAdapter(ArrayList<PlaceModel> foodItems, Context context) {
+    public AdRvAdapter(ArrayList<AdModel> foodItems, Context context) {
         this.placeItems = foodItems;
         this.context = context;
     }
@@ -30,7 +31,7 @@ public class PlacesRvAdapter extends RecyclerView.Adapter<PlacesRvAdapter.PlaceV
     @Override
     public PlaceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context)
-                .inflate(R.layout.rv_place_item, parent, false);
+                .inflate(R.layout.rv_ad_item, parent, false);
         return new PlaceViewHolder(view);
     }
 
@@ -45,19 +46,15 @@ public class PlacesRvAdapter extends RecyclerView.Adapter<PlacesRvAdapter.PlaceV
     }
 
     public class PlaceViewHolder extends RecyclerView.ViewHolder{
-
-        TextView placeName;
         ImageView PlacePic;
         public PlaceViewHolder(@NonNull View itemView) {
             super(itemView);
-            placeName = itemView.findViewById(R.id.tvPlaceName);
             PlacePic = itemView.findViewById(R.id.ivFoodPic);
         }
 
         public void Bind (int position){
-            PlaceModel placeMode = placeItems.get(position);
-            placeName.setText(placeMode.getName());
-            Glide.with(itemView).load(placeMode.getLocalePics())
+            AdModel placeMode = placeItems.get(position);
+            Glide.with(itemView).load(placeMode.getSnap())
                     .placeholder(R.drawable.image_icon)
                     .centerCrop()
                     .fallback(R.drawable.image_icon)

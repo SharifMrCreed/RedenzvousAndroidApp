@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="3dp"
+    android:background="@drawable/text_field_shape"
+    android:orientation="vertical">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivFoodPic"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/allecon"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+</LinearLayout>

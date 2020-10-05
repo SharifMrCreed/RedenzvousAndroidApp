@@ -4,26 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <androidx.appcompat.widget.Toolbar
+        <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/appToolBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:titleTextColor="@color/white"
             app:title="@string/app_name"
             app:navigationIcon="@drawable/menu_icon"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
             />
 
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <FrameLayout
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/fragment_coontainer"
         android:layout_width="match_parent"
+        app:layout_behaviour="AppBarLayout.ScrollingViewBehaviour"
         android:layout_height="match_parent"
         android:layout_below="@id/appBarLayout"/>
 

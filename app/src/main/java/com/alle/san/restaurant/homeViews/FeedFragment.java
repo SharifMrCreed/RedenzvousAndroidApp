@@ -54,7 +54,7 @@ public class FeedFragment extends Fragment {
         preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
         try {
-            URL url = apiUtil.searchFor("beef");
+            URL url = apiUtil.searchFor("burger");
             String savedResults = preferences.getString("Result", null);
             if (savedResults == null){
                 apiUtil.execute(url);

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class FeedsRvAdapter extends RecyclerView.Adapter<FeedsRvAdapter.FeedViewHolder> {
 
-    ArrayList<FoodItem> foodItems = new ArrayList<>();
+    ArrayList<FoodItem> foodItems;
     Context context;
 
     public FeedsRvAdapter(ArrayList<FoodItem> foodItems, Context context) {
