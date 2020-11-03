@@ -1,6 +1,6 @@
 package com.alle.san.restaurant.utilities;
 
-public interface Interactions {
+public interface ViewChanger {
     void onSignInButtonPressed();
     void onSignUpButtonPressed();
     void openFragmentCalled(String fragmentTag);

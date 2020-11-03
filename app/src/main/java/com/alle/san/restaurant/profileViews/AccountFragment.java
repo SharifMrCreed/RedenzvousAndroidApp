@@ -12,13 +12,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.alle.san.restaurant.R;
-import com.alle.san.restaurant.utilities.Interactions;
+import com.alle.san.restaurant.utilities.ViewChanger;
 
 
 public class AccountFragment extends Fragment {
     Button bSignUp;
     Button bSignIn;
-    Interactions viewInteractions;
+    ViewChanger viewViewChanger;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class AccountFragment extends Fragment {
         bSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewInteractions.onSignInButtonPressed();
+                viewViewChanger.onSignInButtonPressed();
 
             }
         });
@@ -46,7 +46,7 @@ public class AccountFragment extends Fragment {
         bSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewInteractions.onSignUpButtonPressed();
+                viewViewChanger.onSignUpButtonPressed();
 
             }
         });
@@ -56,7 +56,7 @@ public class AccountFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        viewInteractions = (Interactions) context;
+        viewViewChanger = (ViewChanger) context;
     }
 
 }

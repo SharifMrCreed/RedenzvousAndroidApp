@@ -7,12 +7,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.alle.san.restaurant.homeViews.HomeFragment;
@@ -20,8 +18,10 @@ import com.alle.san.restaurant.profileViews.AccountFragment;
 import com.alle.san.restaurant.profileViews.ProfileFragment;
 import com.alle.san.restaurant.profileViews.SignInFragment;
 import com.alle.san.restaurant.profileViews.SignUpFragment;
-import com.alle.san.restaurant.utilities.Interactions;
+import com.alle.san.restaurant.utilities.ViewChanger;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import static com.alle.san.restaurant.utilities.Globals.ACCOUNTS_FRAGMENT_TAG;
 import static com.alle.san.restaurant.utilities.Globals.CHATS_FRAGMENT_TAG;
@@ -31,7 +31,7 @@ import static com.alle.san.restaurant.utilities.Globals.PROFILE_FRAGMENT_TAG;
 import static com.alle.san.restaurant.utilities.Globals.SIGN_IN_FRAGMENT_TAG;
 import static com.alle.san.restaurant.utilities.Globals.SIGN_UP_FRAGMENT_TAG;
 
-public class MainActivity extends AppCompatActivity implements Interactions {
+public class MainActivity extends AppCompatActivity implements ViewChanger {
 
     BottomNavigationView bottomNavigationView;
     private SearchView searchView;
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements Interactions {
     SignInFragment signInFragment;
     ProfileFragment profileFragment;
     private ActionBar supportActionBar;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +57,14 @@ public class MainActivity extends AppCompatActivity implements Interactions {
         bottomNavigationView = findViewById(R.id.bottom_nav_bar);
         searchView = findViewById(R.id.action_search);
         toolBar = findViewById(R.id.appToolBar);
-        fragmentContainer = R.id.fragment_coontainer;
+        fragmentContainer = R.id.fragment_container;
 
         setSupportActionBar(toolBar);
         supportActionBar = getSupportActionBar();
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
         initBottomNavigationView();
+
         initFragment(new HomeFragment(), HOME_FRAGMENT_TAG);
 
 
@@ -69,45 +72,67 @@ public class MainActivity extends AppCompatActivity implements Interactions {
 
     private void initBottomNavigationView() {
         bottomNavigationView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectedFragment = new HomeFragment();
-                String tag = null;
-                switch (item.getItemId()){
-                    case(R.id.action_home):
-                        tag = HOME_FRAGMENT_TAG;
-                        if (supportActionBar != null && (!supportActionBar.isShowing())){
-                            supportActionBar.show();
-                        }
-                        break;
-                    case(R.id.action_chat):
-                        selectedFragment = chatsFragment = new ChatsFragment();
-                        tag = CHATS_FRAGMENT_TAG;
-                        if (supportActionBar != null && (!supportActionBar.isShowing())){
-                            supportActionBar.show();
-                        }
-                        break;
-                    case(R.id.action_favourites):
-                        selectedFragment = favoritesFragment = new FavoritesFragment();
-                        tag = FAVOURITES_FRAGMENT_TAG;
-                        if (supportActionBar != null && (!supportActionBar.isShowing())){
-                        supportActionBar.show();
-                    }
-                        break;
-                    case(R.id.action_profile):
-                        selectedFragment = accountFragment = new AccountFragment();
-                        tag = ACCOUNTS_FRAGMENT_TAG;
-                        if (supportActionBar != null && (supportActionBar.isShowing())){
-                            supportActionBar.hide();
-                        }
-                        break;
+                item -> {
 
-                }
-                initFragment(selectedFragment, tag);
-                return true;
-            }
-        });
+                    Fragment selectedFragment = null;
+                    String tag = null;
+                    switch (item.getItemId()){
+                        case(R.id.action_home):
+                            selectedFragment = new HomeFragment();
+                            tag = HOME_FRAGMENT_TAG;
+                            showToolbar();
+                            break;
+                        case(R.id.action_chat):
+                            if (chatsFragment == null){
+                                chatsFragment = new ChatsFragment();
+                            }
+                            selectedFragment = chatsFragment;
+                            tag = CHATS_FRAGMENT_TAG;
+                            showToolbar();
+                            break;
+                        case(R.id.action_favourites):
+                            if (favoritesFragment == null){
+                                favoritesFragment = new FavoritesFragment();
+                            }
+                            selectedFragment = favoritesFragment;
+                            tag = FAVOURITES_FRAGMENT_TAG;
+                            showToolbar();
+                            break;
+                        case(R.id.action_profile):
+                            if (user != null){
+                                if (profileFragment == null){
+                                    profileFragment = new ProfileFragment();
+                                }
+                                selectedFragment = profileFragment;
+                                tag = PROFILE_FRAGMENT_TAG;
+                            }else{
+                                if (accountFragment == null) {
+                                    accountFragment = new AccountFragment();
+                                }
+                                selectedFragment = accountFragment;
+                                tag = ACCOUNTS_FRAGMENT_TAG;
+                            }
+                            hideToolBar();
+                            break;
+
+                    }
+                    if (selectedFragment != null){
+                        initFragment(selectedFragment, tag);
+
+                    }
+                    return true;
+                });
+    }
+    private void showToolbar(){
+        if (supportActionBar != null && (!supportActionBar.isShowing())){
+            supportActionBar.show();
+        }
+    }
+
+    private  void hideToolBar(){
+        if (supportActionBar != null && (supportActionBar.isShowing())){
+            supportActionBar.hide();
+        }
     }
 
     @Override
@@ -147,25 +172,43 @@ public class MainActivity extends AppCompatActivity implements Interactions {
                     super.onBackPressed();
                     break;
                 case(R.id.action_chat):
-                    initFragment(new HomeFragment(), HOME_FRAGMENT_TAG);
+                    if (homeFragment == null){
+                        homeFragment = new HomeFragment();
+                    }
+                    initFragment(homeFragment, HOME_FRAGMENT_TAG);
                     bottomNavigationView.setSelectedItemId(R.id.action_home);
                     break;
                 case(R.id.action_favourites):
-                    initFragment(chatsFragment == null? new ChatsFragment() : chatsFragment, CHATS_FRAGMENT_TAG);
+                    if (chatsFragment == null){
+                    chatsFragment = new ChatsFragment();
+                    }
+                    initFragment(chatsFragment, CHATS_FRAGMENT_TAG);
                     bottomNavigationView.setSelectedItemId(R.id.action_chat);
                     break;
                 case(R.id.action_profile):
-                    initFragment(favoritesFragment == null? new FavoritesFragment() : favoritesFragment, FAVOURITES_FRAGMENT_TAG);
+                    if (favoritesFragment == null){
+                        favoritesFragment = new FavoritesFragment();
+                    }
+                    initFragment(favoritesFragment, FAVOURITES_FRAGMENT_TAG);
                     bottomNavigationView.setSelectedItemId(R.id.action_favourites);
                     bottomNavigationView.setVisibility(View.VISIBLE);
-                    if (supportActionBar != null && (!supportActionBar.isShowing())){
-                        supportActionBar.show();
-                    }
+                    showToolbar();
                     break;
 
             }
         }else{
-            initFragment(accountFragment == null? new AccountFragment() : accountFragment, ACCOUNTS_FRAGMENT_TAG);
+            if (user != null){
+                if (profileFragment == null){
+                    profileFragment = new ProfileFragment();
+                }
+                initFragment(profileFragment, PROFILE_FRAGMENT_TAG);
+            }else{
+                if (accountFragment == null){
+                    accountFragment = new AccountFragment();
+                }
+                initFragment(accountFragment, ACCOUNTS_FRAGMENT_TAG);
+
+            }
             bottomNavigationView.setVisibility(View.VISIBLE);
 
         }

@@ -6,7 +6,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    <style name="ShapeAppearanceOverlay.LowerRoundCorners" parent="">
+    <style name="CircleShapeOverlay" parent="">
         <item name="cornerSize">45%</item>
     </style>
 </resources>

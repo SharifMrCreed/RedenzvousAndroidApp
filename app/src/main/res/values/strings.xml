@@ -7,7 +7,7 @@
     <string name="SLOGAN">look at the Hotel or restaurant\'s menu, their atmosphere, then book a reservation</string>
     <string name="title_activity_sign_in">Sign In</string>
 
-    <string name="forgot_password_click_here">Forgot Password? Click here</string>
+    <string name="forgot_password_click_here">Forgot Password</string>
     <string name="title_activity_sign_up">Sign Up</string>
     <string name="create_id_number">Enter Full Names</string>
     <string name="enter_email_address">Enter Email Address</string>
@@ -19,4 +19,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="email_address">Email Address</string>
+    <string name="register">Register</string>
 </resources>
