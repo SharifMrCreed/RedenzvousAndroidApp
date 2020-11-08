@@ -42,7 +42,6 @@ public class SignInFragment extends Fragment {
         registerButton = view.findViewById(R.id.register);
         forgotPasswordButton = view.findViewById(R.id.forgot_password);
         progressBar = view.findViewById(R.id.signInProgressBar);
-
         initButtons();
         initFirebaseAuthentication();
 

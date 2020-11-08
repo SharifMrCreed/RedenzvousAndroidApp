@@ -17,13 +17,17 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.alle.san.restaurant.R;
+import com.alle.san.restaurant.models.AppUser;
 import com.alle.san.restaurant.utilities.ViewChanger;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.FirebaseDatabase;
 
+import static com.alle.san.restaurant.utilities.Globals.FIREBASE_USERS_NODE;
 import static com.alle.san.restaurant.utilities.Globals.PROFILE_FRAGMENT_TAG;
 import static com.alle.san.restaurant.utilities.Globals.SIGN_IN_FRAGMENT_TAG;
 
@@ -104,6 +108,7 @@ public class SignUpFragment extends Fragment {
         nCreateAccount.setOnClickListener(view -> {
             final String pNames = nFullNames.getText().toString();
             String pEmail = nEmail.getText().toString();
+            String pPhoneNumber = "1";
             String pPassword = nPassword.getText().toString();
             String pRePassword = nRetypePassword.getText().toString();
 
@@ -117,13 +122,27 @@ public class SignUpFragment extends Fragment {
                                 authInstance.createUserWithEmailAndPassword(pEmail, pPassword)
                                         .addOnCompleteListener(task -> {
                                             if (task.isSuccessful()){
-                                                Toast.makeText(getActivity(), pNames + " is now Registered", Toast.LENGTH_LONG).show();
-                                                nProgressBar.setVisibility(View.GONE);
-                                                nFullNames.setText("");
-                                                nEmail.setText("");
-                                                nPassword.setText("");
-                                                nRetypePassword.setText("");
-                                                viewChanger.openFragmentCalled(PROFILE_FRAGMENT_TAG);
+                                                FirebaseUser user = authInstance.getCurrentUser();
+                                                UserProfileChangeRequest request = new UserProfileChangeRequest.Builder()
+                                                        .setDisplayName(pNames).build();
+                                                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                                                if (user != null){
+                                                    AppUser appUser = new AppUser(pNames, pEmail, pPhoneNumber, user.getUid());
+                                                    user.updateProfile(request).addOnCompleteListener(task1 -> {
+                                                        if (task1.isSuccessful()){
+                                                            firebaseDatabase.getReference().child(FIREBASE_USERS_NODE)
+                                                                    .child(user.getUid())
+                                                                    .setValue(appUser).addOnCompleteListener(task2 -> {
+                                                                if (task2.isSuccessful()){
+                                                                    Toast.makeText(getActivity(), pNames + " is now Registered", Toast.LENGTH_LONG).show();
+                                                                    nProgressBar.setVisibility(View.GONE);
+                                                                    viewChanger.openFragmentCalled(PROFILE_FRAGMENT_TAG);
+                                                                }
+                                                            });
+                                                        }
+
+                                                    });
+                                                }
                                             }else{
                                                 nProgressBar.setVisibility(View.GONE);
                                                 Toast.makeText(getActivity(), " Something Went wrong", Toast.LENGTH_LONG).show();
