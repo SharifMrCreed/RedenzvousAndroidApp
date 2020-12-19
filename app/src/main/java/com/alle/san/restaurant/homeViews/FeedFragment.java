@@ -32,16 +32,28 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static com.alle.san.restaurant.utilities.Globals.SEARCH_TERM;
+
 public class FeedFragment extends Fragment {
 
-    private static final String TAG = "FeedFragment";
-    private static RecyclerView feedsRecyclerView;
-    static ProgressBar progressBar;
+    private final String TAG = "FeedFragment";
+    private RecyclerView feedsRecyclerView;
+    ProgressBar progressBar;
 
     static ArrayList<FoodItem> listOfFoods = new ArrayList<>();
 
-   static String results;
+    static String results;
     private SharedPreferences preferences;
+    String searchTerm = null;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            searchTerm = bundle.getString(SEARCH_TERM);
+        }
+    }
 
     @Nullable
     @Override
@@ -54,7 +66,10 @@ public class FeedFragment extends Fragment {
         preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
         try {
-            URL url = apiUtil.searchFor("burger");
+            if (searchTerm == null){
+                searchTerm = "burgers";
+            }
+            URL url = apiUtil.searchFor(searchTerm);
             String savedResults = preferences.getString("Result", null);
             if (savedResults == null){
                 apiUtil.execute(url);

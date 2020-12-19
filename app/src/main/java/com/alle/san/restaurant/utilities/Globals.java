@@ -11,4 +11,5 @@ public class Globals {
     public static final String PARTY_FRAGMENT_TAG = "Party Fragment";
     public static final String PICKS_FRAGMENT_TAG = "Picks Fragment";
     public static final String PROFILE_FRAGMENT_TAG = "Profile Fragment";
+    public static final String SEARCH_TERM = "Search term";
 }
