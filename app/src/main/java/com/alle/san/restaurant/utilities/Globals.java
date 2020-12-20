@@ -1,6 +1,7 @@
 package com.alle.san.restaurant.utilities;
 
 public class Globals {
+    // fragments
     public static final String ACCOUNTS_FRAGMENT_TAG = "Accounts Fragment";
     public static final String SIGN_IN_FRAGMENT_TAG = "Sign In Fragment";
     public static final String SIGN_UP_FRAGMENT_TAG = "Sign Up Fragment";
@@ -11,4 +12,17 @@ public class Globals {
     public static final String PARTY_FRAGMENT_TAG = "Party Fragment";
     public static final String PICKS_FRAGMENT_TAG = "Picks Fragment";
     public static final String PROFILE_FRAGMENT_TAG = "Profile Fragment";
+
+    // fire base nodes
+    public static final String FIREBASE_USERS_NODE = "users";
+    public static final String FIREBASE_CHAT_NODE = "chat_room";
+
+    //firebase fields
+    public static final String FIREBASE_NAME_FIELD = "name";
+    public static final String FIREBASE_EMAIL_FIELD = "email";
+    public static final String FIREBASE_ID_FIELD = "u_id";
+    public static final String FIREBASE_PHONE_FIELD = "phone";
+    public static final String FIREBASE_PROFILE_IMAGE_FIELD = "profile_image";
+    public static final String FIREBASE_CREATOR_ID_FIELD = "creator_id";
+
 }

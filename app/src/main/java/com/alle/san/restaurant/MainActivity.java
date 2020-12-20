@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements ViewChanger {
                             showToolbar();
                             break;
                         case(R.id.action_profile):
+                            hideToolBar();
                             if (user != null){
                                 if (profileFragment == null){
                                     profileFragment = new ProfileFragment();
@@ -112,7 +113,6 @@ public class MainActivity extends AppCompatActivity implements ViewChanger {
                                 selectedFragment = accountFragment;
                                 tag = ACCOUNTS_FRAGMENT_TAG;
                             }
-                            hideToolBar();
                             break;
 
                     }
@@ -241,13 +241,25 @@ public class MainActivity extends AppCompatActivity implements ViewChanger {
 
     @Override
     public void openFragmentCalled(String fragmentTag) {
-        if (fragmentTag.equals(SIGN_IN_FRAGMENT_TAG)){
-            onSignInButtonPressed();
-        }else if (fragmentTag.equals(PROFILE_FRAGMENT_TAG)){
-            if (profileFragment == null){
-                profileFragment = new ProfileFragment();
-            }
-            initFragment(profileFragment, fragmentTag);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        switch (fragmentTag) {
+            case SIGN_IN_FRAGMENT_TAG:
+                onSignInButtonPressed();
+                break;
+            case PROFILE_FRAGMENT_TAG:
+                if (profileFragment == null) {
+                    profileFragment = new ProfileFragment();
+                }
+                initFragment(profileFragment, fragmentTag);
+                break;
+            case ACCOUNTS_FRAGMENT_TAG:
+                if (accountFragment == null) {
+                    accountFragment = new AccountFragment();
+                }
+                initFragment(accountFragment, fragmentTag);
+                break;
         }
     }
+
+
 }

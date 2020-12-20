@@ -1,23 +1,26 @@
 <resources>
 
     <string name="app_name">EPICUREAN</string>
-    <string name="texthere">Logo Goes Here</string>
     <string name="create">Create Account</string>
     <string name="enter_password">Password</string>
-    <string name="SLOGAN">look at the Hotel or restaurant\'s menu, their atmosphere, then book a reservation</string>
     <string name="title_activity_sign_in">Sign In</string>
 
     <string name="forgot_password_click_here">Forgot Password</string>
-    <string name="title_activity_sign_up">Sign Up</string>
     <string name="create_id_number">Enter Full Names</string>
     <string name="enter_email_address">Enter Email Address</string>
     <string name="create_password">Create Password</string>
     <string name="reenter_password">Re-Enter Password</string>
     <string name="have_an_account_sign_in">Have an account? Sign In</string>
-    <string name="saveToast">Account Created</string>
-    <string name="sign_in_with_google">Sign In With Google</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="email_address">Email Address</string>
     <string name="register">Register</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="user_name">User Name</string>
+    <string name="display_name">Display Name</string>
+    <string name="_8">8</string>
+    <string name="_23">23</string>
+    <string name="dishes">Dishes</string>
+    <string name="visited">Visited</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="log_out">Log out</string>
 </resources>

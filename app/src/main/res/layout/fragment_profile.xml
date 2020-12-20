@@ -21,9 +21,11 @@
                 android:id="@+id/userProfileImage"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
+                android:layout_marginStart="60dp"
                 app:shapeAppearanceOverlay="@style/CircleShapeOverlay"
                 android:src="@drawable/allecon"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="60dp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -42,7 +44,7 @@
                     android:id="@+id/displayNames"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Display Name"
+                    android:text="@string/display_name"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     android:layout_marginBottom="5dp"/>
@@ -50,10 +52,24 @@
                     android:id="@+id/userName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="User Name"
+                    android:text="@string/user_name"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     />
+                <TextView
+                    android:id="@+id/edit_info"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/hexagon"
+                    android:text="@string/edit_profile"
+                    android:clickable="true"
+                    android:textStyle="bold"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="16sp"
+                    android:focusable="true" />
 
             </LinearLayout>
 
@@ -86,13 +102,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="8"
+                        android:text="@string/_8"
                         android:textColor="@color/white"
                         android:textSize="35sp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Visited"
+                        android:text="@string/visited"
                         android:textColor="@color/white"
                         android:textSize="20sp"/>
 
@@ -120,13 +136,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="23"
+                        android:text="@string/_23"
                         android:textSize="35sp"
                         android:textColor="@color/white"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dishes"
+                        android:text="@string/dishes"
                         android:textSize="20sp"
                         android:textColor="@color/white"/>
 
@@ -136,108 +152,89 @@
 
         </LinearLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/fullName_layout"
+        <TextView
+            android:id="@+id/display_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Full Name"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginEnd="20dp">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/fullName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:background="@android:color/transparent"
-                android:drawableStart="@drawable/person_icon"
-                android:drawableLeft="@drawable/person_icon"
-                android:drawablePadding="10dp"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etPerEmail_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email"
-            android:autofillHints="Email"
-            app:hintTextColor="@color/white"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginEnd="20dp">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPerEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:background="@android:color/transparent"
-                android:drawableStart="@drawable/email_icon"
-                android:drawableLeft="@drawable/email_icon"
-                android:drawablePadding="10dp"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etPerPassword_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="**********"
-            app:hintTextColor="@color/white"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginEnd="20dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPerPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:background="@android:color/transparent"
-                android:drawableStart="@drawable/lock_icon"
-                android:drawableLeft="@drawable/lock_icon"
-                android:drawablePadding="10dp"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/PerRePassword_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="**********"
-            app:hintTextColor="@color/white"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginEnd="20dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPerRePassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:background="@android:color/transparent"
-                android:drawableStart="@drawable/lock_icon"
-                android:drawableLeft="@drawable/lock_icon"
-                android:drawablePadding="10dp"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/btncreate_account"
-            android:layout_width="match_parent"
-            android:layout_margin="20dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_shape"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
             android:padding="8dp"
-            android:text="Update"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            app:cornerRadius="4dp" />
+            android:text="@string/display_name"
+            android:textSize="20sp"
+            android:background="@android:color/transparent"
+            android:drawablePadding="10dp"
+            app:drawableStartCompat="@drawable/person_icon"
+            app:drawableLeftCompat="@drawable/person_icon" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/etPerEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/email_address"
+            android:padding="8dp"
+            android:textSize="20sp"
+            app:hintTextColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="@android:color/transparent"
+            android:drawablePadding="10dp"
+            app:drawableLeftCompat="@drawable/email_icon"
+            app:drawableStartCompat="@drawable/email_icon" />
+
+        <TextView
+            android:id="@+id/phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintTextColor="@color/white"
+            android:text ="@string/phone_number"
+            android:padding="8dp"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="@android:color/transparent"
+            android:drawablePadding="10dp"
+            app:drawableLeftCompat="@drawable/lock_icon"
+            app:drawableStartCompat="@drawable/lock_icon"/>
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_name"
+            android:textSize="20sp"
+            app:hintTextColor="@color/white"
+            android:padding="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="@android:color/transparent"
+            android:drawablePadding="10dp"
+            app:drawableStartCompat="@drawable/lock_icon"
+            app:drawableLeftCompat="@drawable/lock_icon" />
+
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:layout_margin="20dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_shape"
+                android:padding="8dp"
+                android:layout_gravity="center"
+                android:text="@string/log_out"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:cornerRadius="4dp" />
+
+        </LinearLayout>
+
     <ProgressBar
         android:id="@+id/signUpProgressBar"
         style="?android:attr/progressBarStyle"
@@ -247,7 +244,5 @@
         android:layout_marginTop="500dp"
         android:layout_marginStart="170dp"
         android:layout_marginLeft="170dp" />
-
-
 
 </RelativeLayout>
