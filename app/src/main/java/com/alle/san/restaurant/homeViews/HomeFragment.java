@@ -14,7 +14,24 @@ import com.alle.san.restaurant.adapters.HomePagerAdapter;
 import com.alle.san.restaurant.R;
 import com.google.android.material.tabs.TabLayout;
 
+import static com.alle.san.restaurant.utilities.Globals.SEARCH_TERM;
+
 public class HomeFragment extends Fragment {
+
+    FeedFragment feedFragment = new FeedFragment();
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        if (bundle != null){
+            Bundle arg = new Bundle();
+            arg.putString(SEARCH_TERM, bundle.getString(SEARCH_TERM));
+            feedFragment.setArguments(arg);
+        }
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -25,7 +42,7 @@ public class HomeFragment extends Fragment {
 
         setTabData(nTabLayout);
         nTabLayout.setupWithViewPager(nViewPager);
-        final HomePagerAdapter adapter = new HomePagerAdapter(nTabLayout, getChildFragmentManager(), nTabLayout.getTabCount());
+        final HomePagerAdapter adapter = new HomePagerAdapter(nTabLayout, getChildFragmentManager(), nTabLayout.getTabCount(), feedFragment);
         nViewPager.setAdapter(adapter);
 
         nViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(nTabLayout));

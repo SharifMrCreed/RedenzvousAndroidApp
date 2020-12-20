@@ -4,12 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -28,13 +31,13 @@ import static com.alle.san.restaurant.utilities.Globals.CHATS_FRAGMENT_TAG;
 import static com.alle.san.restaurant.utilities.Globals.FAVOURITES_FRAGMENT_TAG;
 import static com.alle.san.restaurant.utilities.Globals.HOME_FRAGMENT_TAG;
 import static com.alle.san.restaurant.utilities.Globals.PROFILE_FRAGMENT_TAG;
+import static com.alle.san.restaurant.utilities.Globals.SEARCH_TERM;
 import static com.alle.san.restaurant.utilities.Globals.SIGN_IN_FRAGMENT_TAG;
 import static com.alle.san.restaurant.utilities.Globals.SIGN_UP_FRAGMENT_TAG;
 
 public class MainActivity extends AppCompatActivity implements ViewChanger {
 
     BottomNavigationView bottomNavigationView;
-    private SearchView searchView;
     Toolbar toolBar;
 
 
@@ -55,7 +58,6 @@ public class MainActivity extends AppCompatActivity implements ViewChanger {
         setContentView(R.layout.activity_main);
 
         bottomNavigationView = findViewById(R.id.bottom_nav_bar);
-        searchView = findViewById(R.id.action_search);
         toolBar = findViewById(R.id.appToolBar);
         fragmentContainer = R.id.fragment_container;
 
@@ -138,25 +140,42 @@ public class MainActivity extends AppCompatActivity implements ViewChanger {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.top_menu, menu);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
+        searchView.setBackgroundColor(Color.WHITE);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String search) {
+                Bundle args = new Bundle();
+                Toast.makeText(MainActivity.this, " Searching for " + search, Toast.LENGTH_LONG).show();
+                args.putString(SEARCH_TERM, search);
+                HomeFragment homeNew = new HomeFragment();
+                homeNew.setArguments(args);
+                hideSoftKeyboard();
+                initFragment(homeNew, HOME_FRAGMENT_TAG);
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
         return true;
+    }
+
+    private void hideSoftKeyboard() {
+        View view = this.getCurrentFocus();
+        if (view != null){
+            InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_search){
-            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String s) {
-                    Toast.makeText(getApplicationContext(), " Searching.....", Toast.LENGTH_LONG)
-                            .show();
-                    return true;
-                }
 
-                @Override
-                public boolean onQueryTextChange(String s) {
-                    return false;
-                }
-            });
 
             return true;
         }else {

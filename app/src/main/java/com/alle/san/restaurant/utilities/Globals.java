@@ -12,6 +12,7 @@ public class Globals {
     public static final String PARTY_FRAGMENT_TAG = "Party Fragment";
     public static final String PICKS_FRAGMENT_TAG = "Picks Fragment";
     public static final String PROFILE_FRAGMENT_TAG = "Profile Fragment";
+<<<<<<< HEAD
 
     // fire base nodes
     public static final String FIREBASE_USERS_NODE = "users";
@@ -25,4 +26,7 @@ public class Globals {
     public static final String FIREBASE_PROFILE_IMAGE_FIELD = "profile_image";
     public static final String FIREBASE_CREATOR_ID_FIELD = "creator_id";
 
+=======
+    public static final String SEARCH_TERM = "Search term";
+>>>>>>> 06eab83261850f883cbd726f0c5c4f31f1d72009
 }

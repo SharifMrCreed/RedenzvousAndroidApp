@@ -20,11 +20,13 @@ import java.util.Objects;
 public class HomePagerAdapter extends FragmentStatePagerAdapter {
     int totalTabs;
     TabLayout tabLayout;
+    FeedFragment feedFragment;
 
-    public HomePagerAdapter(TabLayout tabLayout, @NonNull FragmentManager fm, int totalTabs) {
+    public HomePagerAdapter(TabLayout tabLayout, @NonNull FragmentManager fm, int totalTabs, FeedFragment feedFragment ) {
         super(fm);
         this.totalTabs=totalTabs;
         this.tabLayout = tabLayout;
+        this.feedFragment = feedFragment;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -33,7 +35,7 @@ public class HomePagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return new FeedFragment();
+                return feedFragment;
             case 1:
                 return new PicksFragment();
             case 2:
