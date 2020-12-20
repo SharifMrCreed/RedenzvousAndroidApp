@@ -2,37 +2,60 @@ package com.alle.san.restaurant.models;
 
 public class Person {
 
-    private String PName;
-    private String PEmail;
-    private String Ppassword;
+    private String name;
+    private String email;
+    private String phone_number;
+    private String profile_image;
+    private String user_id;
 
-    public Person(String pName, String pEmail, String ppassword) {
-        setPName(pName);
-        setPEmail(pEmail);
-        setPpassword(ppassword);
+    public Person(String pName, String pEmail, String phone_number, String profile_image, String user_id) {
+        setName(pName);
+        setEmail(pEmail);
+        setPhone_number(phone_number);
+        setProfile_image(profile_image);
+        setUser_id(user_id);
     }
 
-    public String getPName() {
-        return PName;
+    public Person() {
     }
 
-    public void setPName(String PName) {
-        this.PName = PName;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public String getPEmail() {
-        return PEmail;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
-    public void setPEmail(String PEmail) {
-        this.PEmail = PEmail;
+    public String getProfile_image() {
+        return profile_image;
     }
 
-    public String getPpassword() {
-        return Ppassword;
+    public void setProfile_image(String profile_image) {
+        this.profile_image = profile_image;
     }
 
-    public void setPpassword(String ppassword) {
-        Ppassword = ppassword;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
     }
 }
