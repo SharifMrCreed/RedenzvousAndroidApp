@@ -17,13 +17,13 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class FeedsRvAdapter extends RecyclerView.Adapter<FeedsRvAdapter.FeedViewHolder> {
+public class SimilarRvAdapter extends RecyclerView.Adapter<SimilarRvAdapter.FeedViewHolder> {
 
     ArrayList<FoodItem> foodItems;
     Context context;
     ViewChanger nViewChanger;
 
-    public FeedsRvAdapter(ArrayList<FoodItem> foodItems, Context context) {
+    public SimilarRvAdapter(ArrayList<FoodItem> foodItems, Context context) {
         this.foodItems = foodItems;
         this.context = context;
     }
@@ -31,7 +31,7 @@ public class FeedsRvAdapter extends RecyclerView.Adapter<FeedsRvAdapter.FeedView
     @NonNull
     @Override
     public FeedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(context).inflate(R.layout.rv_feeds_item, parent, false);
+        View itemView = LayoutInflater.from(context).inflate(R.layout.rv_similar_food, parent, false);
         return new FeedViewHolder(itemView, foodItems, nViewChanger);
     }
 
@@ -55,9 +55,9 @@ public class FeedsRvAdapter extends RecyclerView.Adapter<FeedsRvAdapter.FeedView
 
         TextView foodName, placeName;
         ImageView foodPic;
-        private final ArrayList<FoodItem> foodItems;
+        ArrayList<FoodItem> foodItems;
         ViewChanger viewChanger;
-    
+        
         public FeedViewHolder(@NonNull View itemView, ArrayList<FoodItem> foodItems, ViewChanger viewChanger) {
             super(itemView);
             foodName = itemView.findViewById(R.id.tvFoodName);

@@ -16,15 +16,22 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.alle.san.restaurant.homeViews.FoodItemFragment;
 import com.alle.san.restaurant.homeViews.HomeFragment;
+import com.alle.san.restaurant.homeViews.PlaceItemFragment;
+import com.alle.san.restaurant.models.FoodItem;
+import com.alle.san.restaurant.models.PlaceModel;
 import com.alle.san.restaurant.profileViews.AccountFragment;
 import com.alle.san.restaurant.profileViews.ProfileFragment;
 import com.alle.san.restaurant.profileViews.SignInFragment;
 import com.alle.san.restaurant.profileViews.SignUpFragment;
+import com.alle.san.restaurant.utilities.Globals;
 import com.alle.san.restaurant.utilities.ViewChanger;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.ArrayList;
 
 import static com.alle.san.restaurant.utilities.Globals.ACCOUNTS_FRAGMENT_TAG;
 import static com.alle.san.restaurant.utilities.Globals.CHATS_FRAGMENT_TAG;
@@ -279,6 +286,39 @@ public class MainActivity extends AppCompatActivity implements ViewChanger {
                 break;
         }
     }
-
-
+    
+    @Override
+    public void onTopButtonClick(String name) {
+        for (String item : Globals.foodItems){
+            if (item.equals(name)){
+                Bundle args = new Bundle();
+                args.putString(SEARCH_TERM, name);
+                HomeFragment homeNew = new HomeFragment();
+                homeNew.setArguments(args);
+                initFragment(homeNew, HOME_FRAGMENT_TAG);
+            }
+        }
+    }
+    
+    @Override
+    public void onFoodItemClick(FoodItem food, ArrayList<FoodItem> foodItems) {
+        Bundle args = new Bundle();
+        args.putParcelable(Globals.FOOD_ITEM, food);
+        args.putParcelableArrayList(Globals.FOOD_ITEMS, foodItems);
+        FoodItemFragment foodItemFragment = new FoodItemFragment();
+        foodItemFragment.setArguments(args);
+        initFragment(foodItemFragment, Globals.FOOD_ITEM_FRAGMENT_TAG);
+    }
+    
+    @Override
+    public void onPlaceItemClick(PlaceModel place, ArrayList<PlaceModel> places) {
+        Bundle args = new Bundle();
+        args.putParcelable(Globals.PLACE_ITEM, place);
+        args.putParcelableArrayList(Globals.PLACE_ITEMS, places);
+        PlaceItemFragment placeItemFragment = new PlaceItemFragment();
+        placeItemFragment.setArguments(args);
+        initFragment(placeItemFragment, Globals.PLACE_ITEM_FRAGMENT_TAG);
+    }
+    
+    
 }

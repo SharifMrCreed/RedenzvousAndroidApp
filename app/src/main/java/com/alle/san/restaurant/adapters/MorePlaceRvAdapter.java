@@ -11,28 +11,28 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alle.san.restaurant.R;
-import com.alle.san.restaurant.models.FoodItem;
+import com.alle.san.restaurant.models.PlaceModel;
 import com.alle.san.restaurant.utilities.ViewChanger;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class FeedsRvAdapter extends RecyclerView.Adapter<FeedsRvAdapter.FeedViewHolder> {
+public class MorePlaceRvAdapter extends RecyclerView.Adapter<MorePlaceRvAdapter.FeedViewHolder> {
 
-    ArrayList<FoodItem> foodItems;
+    ArrayList<PlaceModel> places;
     Context context;
     ViewChanger nViewChanger;
 
-    public FeedsRvAdapter(ArrayList<FoodItem> foodItems, Context context) {
-        this.foodItems = foodItems;
+    public MorePlaceRvAdapter(ArrayList<PlaceModel> places, Context context) {
+        this.places = places;
         this.context = context;
     }
 
     @NonNull
     @Override
     public FeedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(context).inflate(R.layout.rv_feeds_item, parent, false);
-        return new FeedViewHolder(itemView, foodItems, nViewChanger);
+        View itemView = LayoutInflater.from(context).inflate(R.layout.rv_similar_place, parent, false);
+        return new FeedViewHolder(itemView, places, nViewChanger);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class FeedsRvAdapter extends RecyclerView.Adapter<FeedsRvAdapter.FeedView
 
     @Override
     public int getItemCount() {
-        return foodItems.size();
+        return places.size();
     }
     
     @Override
@@ -53,30 +53,30 @@ public class FeedsRvAdapter extends RecyclerView.Adapter<FeedsRvAdapter.FeedView
     
     public static class FeedViewHolder extends RecyclerView.ViewHolder{
 
-        TextView foodName, placeName;
-        ImageView foodPic;
-        private final ArrayList<FoodItem> foodItems;
+        TextView placeName, location;
+        ImageView placePic;
+        ArrayList<PlaceModel> places;
         ViewChanger viewChanger;
-    
-        public FeedViewHolder(@NonNull View itemView, ArrayList<FoodItem> foodItems, ViewChanger viewChanger) {
+        
+        public FeedViewHolder(@NonNull View itemView, ArrayList<PlaceModel> foodItems, ViewChanger viewChanger) {
             super(itemView);
-            foodName = itemView.findViewById(R.id.tvFoodName);
             placeName = itemView.findViewById(R.id.tvPlaceName);
-            foodPic = itemView.findViewById(R.id.ivFoodPic);
-            this.foodItems = foodItems;
+            location = itemView.findViewById(R.id.tvLocation);
+            placePic = itemView.findViewById(R.id.ivPlacePic);
+            this.places = foodItems;
             this.viewChanger = viewChanger;
         }
 
         public void Bind (int position){
-            FoodItem foodItem = foodItems.get(position);
-            foodName.setText(foodItem.getName());
-            placeName.setText(foodItem.getRestaurantName());
-            Glide.with(itemView).load(foodItem.getImage())
+            PlaceModel place = places.get(position);
+            placeName.setText(place.getName());
+            location.setText(place.getLocale());
+            Glide.with(itemView).load(place.getLocalePics())
                     .placeholder(R.drawable.image_icon)
                     .fallback(R.drawable.image_icon)
                     .error(R.drawable.broken_image_icon)
-                    .into(foodPic);
-            itemView.setOnClickListener(v -> viewChanger.onFoodItemClick(foodItem, foodItems));
+                    .into(placePic);
+            itemView.setOnClickListener(v -> viewChanger.onPlaceItemClick(place, places));
         }
 
     }

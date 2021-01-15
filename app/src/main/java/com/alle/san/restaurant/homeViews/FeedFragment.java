@@ -19,7 +19,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.alle.san.restaurant.R;
 import com.alle.san.restaurant.adapters.FeedsRvAdapter;
+import com.alle.san.restaurant.adapters.TopScrollRvAdapter;
 import com.alle.san.restaurant.models.FoodItem;
+import com.alle.san.restaurant.utilities.Globals;
 import com.alle.san.restaurant.utilities.ParseMenuItem;
 
 import org.json.JSONException;
@@ -60,8 +62,12 @@ public class FeedFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.feeds_fragment,container,false);
         feedsRecyclerView = view.findViewById(R.id.feedsRv);
+        RecyclerView topScroll = view.findViewById(R.id.top_scroll);
         progressBar = view.findViewById(R.id.feedsProgressBar);
-
+        
+        topScroll.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+        topScroll.setAdapter(new TopScrollRvAdapter(Globals.foodItems, getContext()));
+        
         ApiUtil apiUtil = new ApiUtil();
         preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 

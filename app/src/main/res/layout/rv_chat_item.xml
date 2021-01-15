@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginTop="4dp"
+    android:weightSum="100">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/chat_dp"
+        android:layout_width="0dp"
+        android:padding="4dp"
+        android:layout_height="70dp"
+        android:layout_weight="20"
+        app:shapeAppearanceOverlay="@style/CircleShapeOverlay"
+        android:layout_gravity="center"
+        android:src="@drawable/allecon"/>
+
+    <LinearLayout
+        android:id="@+id/enter_chat"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_weight="80"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/chat_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="Chat Name"
+                android:layout_weight="85"
+                android:maxLines="1"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/time_stamp"
+                android:layout_width="0dp"
+                android:layout_weight="15"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:gravity="end"
+                android:text="time"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:orientation="horizontal">
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/message_sender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Name: "/>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/recent_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginTop="4dp"
+                    android:maxLines="1"
+                    android:text="most recent messsage"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

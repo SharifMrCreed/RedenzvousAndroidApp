@@ -1,6 +1,9 @@
 package com.alle.san.restaurant.models;
 
-public class PlaceModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class PlaceModel implements Parcelable {
 
     private String name;
     private String locale;
@@ -14,7 +17,25 @@ public class PlaceModel {
         this.locale = locale;
         this.localePics = localePics;
     }
-
+    
+    protected PlaceModel(Parcel in) {
+        name = in.readString();
+        locale = in.readString();
+        localePics = in.readString();
+    }
+    
+    public static final Creator<PlaceModel> CREATOR = new Creator<PlaceModel>() {
+        @Override
+        public PlaceModel createFromParcel(Parcel in) {
+            return new PlaceModel(in);
+        }
+        
+        @Override
+        public PlaceModel[] newArray(int size) {
+            return new PlaceModel[size];
+        }
+    };
+    
     public String getName() {
         return name;
     }
@@ -37,5 +58,18 @@ public class PlaceModel {
 
     public void setLocalePics(String localePics) {
         this.localePics = localePics;
+    }
+    
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+    
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+    
+        dest.writeString(name);
+        dest.writeString(locale);
+        dest.writeString(localePics);
     }
 }

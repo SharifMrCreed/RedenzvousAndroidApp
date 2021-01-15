@@ -1,12 +1,35 @@
 package com.alle.san.restaurant.models;
 
-public class FoodItem {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class FoodItem implements Parcelable {
     String id;
     String name;
     String restaurantName;
     String servingSize;
     String image;
-
+    
+    protected FoodItem(Parcel in) {
+        id = in.readString();
+        name = in.readString();
+        restaurantName = in.readString();
+        servingSize = in.readString();
+        image = in.readString();
+    }
+    
+    public static final Creator<FoodItem> CREATOR = new Creator<FoodItem>() {
+        @Override
+        public FoodItem createFromParcel(Parcel in) {
+            return new FoodItem(in);
+        }
+        
+        @Override
+        public FoodItem[] newArray(int size) {
+            return new FoodItem[size];
+        }
+    };
+    
     @Override
     public String toString() {
         return "\n {" +
@@ -67,5 +90,20 @@ public class FoodItem {
 
     public void setImage(String image) {
         this.image = image;
+    }
+    
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+    
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+    
+        dest.writeString(id);
+        dest.writeString(name);
+        dest.writeString(restaurantName);
+        dest.writeString(servingSize);
+        dest.writeString(image);
     }
 }
