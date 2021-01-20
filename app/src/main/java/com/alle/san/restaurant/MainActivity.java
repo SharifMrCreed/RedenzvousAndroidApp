@@ -7,7 +7,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,7 +20,6 @@ import com.alle.san.restaurant.homeViews.HomeFragment;
 import com.alle.san.restaurant.homeViews.PlaceItemFragment;
 import com.alle.san.restaurant.models.FoodItem;
 import com.alle.san.restaurant.models.PlaceModel;
-import com.alle.san.restaurant.profileViews.AccountFragment;
 import com.alle.san.restaurant.profileViews.ProfileFragment;
 import com.alle.san.restaurant.profileViews.SignInFragment;
 import com.alle.san.restaurant.profileViews.SignUpFragment;
@@ -44,7 +42,6 @@ import static com.alle.san.restaurant.utilities.Globals.SIGN_UP_FRAGMENT_TAG;
 
 public class MainActivity extends AppCompatActivity implements ViewChanger {
 
-    BottomNavigationView bottomNavigationView;
     Toolbar toolBar;
 
 
@@ -52,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements ViewChanger {
     HomeFragment homeFragment;
     ChatsFragment chatsFragment;
     FavoritesFragment favoritesFragment;
-    AccountFragment accountFragment;
+    SearchView searchView;
     SignUpFragment signUpFragment;
     SignInFragment signInFragment;
     ProfileFragment profileFragment;
@@ -64,74 +61,20 @@ public class MainActivity extends AppCompatActivity implements ViewChanger {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bottomNavigationView = findViewById(R.id.bottom_nav_bar);
         toolBar = findViewById(R.id.appToolBar);
+        
         fragmentContainer = R.id.fragment_container;
 
         setSupportActionBar(toolBar);
         supportActionBar = getSupportActionBar();
         user = FirebaseAuth.getInstance().getCurrentUser();
 
-        initBottomNavigationView();
 
         initFragment(new HomeFragment(), HOME_FRAGMENT_TAG);
 
 
     }
-
-    private void initBottomNavigationView() {
-        bottomNavigationView.setOnNavigationItemSelectedListener(
-                item -> {
-
-                    Fragment selectedFragment = null;
-                    String tag = null;
-                    switch (item.getItemId()){
-                        case(R.id.action_home):
-                            selectedFragment = new HomeFragment();
-                            tag = HOME_FRAGMENT_TAG;
-                            showToolbar();
-                            break;
-                        case(R.id.action_chat):
-                            if (chatsFragment == null){
-                                chatsFragment = new ChatsFragment();
-                            }
-                            selectedFragment = chatsFragment;
-                            tag = CHATS_FRAGMENT_TAG;
-                            showToolbar();
-                            break;
-                        case(R.id.action_favourites):
-                            if (favoritesFragment == null){
-                                favoritesFragment = new FavoritesFragment();
-                            }
-                            selectedFragment = favoritesFragment;
-                            tag = FAVOURITES_FRAGMENT_TAG;
-                            showToolbar();
-                            break;
-                        case(R.id.action_profile):
-                            hideToolBar();
-                            if (user != null){
-                                if (profileFragment == null){
-                                    profileFragment = new ProfileFragment();
-                                }
-                                selectedFragment = profileFragment;
-                                tag = PROFILE_FRAGMENT_TAG;
-                            }else{
-                                if (accountFragment == null) {
-                                    accountFragment = new AccountFragment();
-                                }
-                                selectedFragment = accountFragment;
-                                tag = ACCOUNTS_FRAGMENT_TAG;
-                            }
-                            break;
-
-                    }
-                    if (selectedFragment != null){
-                        initFragment(selectedFragment, tag);
-
-                    }
-                    return true;
-                });
-    }
+    
     private void showToolbar(){
         if (supportActionBar != null && (!supportActionBar.isShowing())){
             supportActionBar.show();
@@ -147,8 +90,7 @@ public class MainActivity extends AppCompatActivity implements ViewChanger {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.top_menu, menu);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
-        searchView.setBackgroundColor(Color.WHITE);
+        searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String search) {
@@ -159,16 +101,16 @@ public class MainActivity extends AppCompatActivity implements ViewChanger {
                 homeNew.setArguments(args);
                 hideSoftKeyboard();
                 initFragment(homeNew, HOME_FRAGMENT_TAG);
-
+            
                 return true;
             }
-
+        
             @Override
             public boolean onQueryTextChange(String s) {
                 return false;
             }
         });
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     private void hideSoftKeyboard() {
@@ -181,70 +123,40 @@ public class MainActivity extends AppCompatActivity implements ViewChanger {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.action_search){
-
-
-            return true;
-        }else {
-            return super.onOptionsItemSelected(item);
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (bottomNavigationView.getVisibility() != View.GONE){
-            switch (bottomNavigationView.getSelectedItemId()){
-                case(R.id.action_home):
-                    super.onBackPressed();
-                    break;
-                case(R.id.action_chat):
-                    if (homeFragment == null){
-                        homeFragment = new HomeFragment();
-                    }
-                    initFragment(homeFragment, HOME_FRAGMENT_TAG);
-                    bottomNavigationView.setSelectedItemId(R.id.action_home);
-                    break;
-                case(R.id.action_favourites):
-                    if (chatsFragment == null){
+        switch (item.getItemId()) {
+            case (R.id.action_chat):
+                if (chatsFragment == null) {
                     chatsFragment = new ChatsFragment();
-                    }
-                    initFragment(chatsFragment, CHATS_FRAGMENT_TAG);
-                    bottomNavigationView.setSelectedItemId(R.id.action_chat);
-                    break;
-                case(R.id.action_profile):
-                    if (favoritesFragment == null){
-                        favoritesFragment = new FavoritesFragment();
-                    }
-                    initFragment(favoritesFragment, FAVOURITES_FRAGMENT_TAG);
-                    bottomNavigationView.setSelectedItemId(R.id.action_favourites);
-                    bottomNavigationView.setVisibility(View.VISIBLE);
-                    showToolbar();
-                    break;
-
-            }
-        }else{
-            if (user != null){
-                if (profileFragment == null){
-                    profileFragment = new ProfileFragment();
                 }
-                initFragment(profileFragment, PROFILE_FRAGMENT_TAG);
-            }else{
-                if (accountFragment == null){
-                    accountFragment = new AccountFragment();
+                initFragment(chatsFragment, CHATS_FRAGMENT_TAG);
+                return true;
+    
+            case (R.id.action_profile):
+                if (user != null) {
+                    if (profileFragment == null) {
+                        profileFragment = new ProfileFragment();
+                    }
+                } else {
+                    if (signInFragment == null) {
+                        signInFragment = new SignInFragment();
+                    }
+                    initFragment(signInFragment, SIGN_IN_FRAGMENT_TAG);
                 }
-                initFragment(accountFragment, ACCOUNTS_FRAGMENT_TAG);
-
-            }
-            bottomNavigationView.setVisibility(View.VISIBLE);
-
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
+
+   
 
     private void initFragment(Fragment fragment, String tag) {
         getSupportFragmentManager().beginTransaction().
                 replace(fragmentContainer, fragment, tag)
+                .addToBackStack(tag)
                 .commit();
     }
+    
 
     @Override
     public void onSignInButtonPressed() {
@@ -252,7 +164,6 @@ public class MainActivity extends AppCompatActivity implements ViewChanger {
             signInFragment = new SignInFragment();
         }
         initFragment(signInFragment, SIGN_IN_FRAGMENT_TAG);
-        bottomNavigationView.setVisibility(View.GONE);
     }
 
     @Override
@@ -261,7 +172,6 @@ public class MainActivity extends AppCompatActivity implements ViewChanger {
             signUpFragment = new SignUpFragment();
         }
         initFragment(signUpFragment, SIGN_UP_FRAGMENT_TAG);
-        bottomNavigationView.setVisibility(View.GONE);
 
     }
 
@@ -279,10 +189,10 @@ public class MainActivity extends AppCompatActivity implements ViewChanger {
                 initFragment(profileFragment, fragmentTag);
                 break;
             case ACCOUNTS_FRAGMENT_TAG:
-                if (accountFragment == null) {
-                    accountFragment = new AccountFragment();
+                if (signInFragment == null){
+                    signInFragment = new SignInFragment();
                 }
-                initFragment(accountFragment, fragmentTag);
+                initFragment(signInFragment, SIGN_IN_FRAGMENT_TAG);
                 break;
         }
     }

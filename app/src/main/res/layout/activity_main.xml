@@ -10,17 +10,18 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/appToolBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:titleTextColor="@color/white"
-            app:title="@string/app_name"
+            app:titleTextColor="@color/colorAccent"
+            app:title="PLOT"
+            app:menu="@menu/top_menu"
             app:navigationIcon="@drawable/menu_icon"
             app:layout_scrollFlags="scroll|enterAlways|snap"
-            />
-
+           />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -29,14 +30,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
-
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@drawable/rectangle_shape"
-        app:menu="@menu/bottom_frag_navigation"/>
+    
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

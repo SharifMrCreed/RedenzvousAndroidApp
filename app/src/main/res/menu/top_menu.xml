@@ -8,4 +8,15 @@
         android:title="Search"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_chat"
+        android:icon="@drawable/chat"
+        android:title="chat"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_profile"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title="profile"
+        app:showAsAction="ifRoom"/>
+
 </menu>

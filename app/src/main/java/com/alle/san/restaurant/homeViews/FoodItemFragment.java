@@ -1,11 +1,14 @@
 package com.alle.san.restaurant.homeViews;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,7 +24,10 @@ import com.alle.san.restaurant.models.FoodItem;
 import com.alle.san.restaurant.utilities.Globals;
 import com.bumptech.glide.Glide;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class FoodItemFragment extends Fragment {
     
@@ -55,11 +61,15 @@ public class FoodItemFragment extends Fragment {
         similarItems = view.findViewById(R.id.rv_similar_items);
         parentLayout = view.findViewById(R.id.food_item_parent);
         initRecyclerViews();
-        initViews();
+        try {
+            initViews();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         return view;
     }
     
-    private void initViews() {
+    private void initViews() throws MalformedURLException {
         Glide.with(getContext()).load(nFoodItem.getImage())
                 .placeholder(R.drawable.image_icon)
                 .fallback(R.drawable.broken_image_icon)
@@ -67,16 +77,20 @@ public class FoodItemFragment extends Fragment {
                 .into(foodPic);
         placeName.setText(nFoodItem.getRestaurantName());
         foodName.setText(nFoodItem.getName());
-//        Palette.from(nFoodItem.getImage()).generate(palette ->{
-//            Palette.Swatch swatch = palette.getDominantSwatch;
-//            if (swatch != null){
-//                GradientDrawable parentBackground = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP,
-//                        new int[]{ swatch.getRgb() , 0x00000000});
-//                parentLayout.setBackground(parentBackground);
-//                foodName.setTextColor(swatch.getTitleTextColor());
-//                placeName.setTextColor(swatch.getBodyTextColor());
-//            }
-//        });
+        Bitmap bitmap = Globals.getBitmapAt(new URL(nFoodItem.getImage()));
+        if (bitmap == null){
+            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.aa);
+        }
+        Palette.from(bitmap).generate(palette ->{
+            Palette.Swatch swatch = palette.getDominantSwatch();
+            if (swatch != null){
+                GradientDrawable parentBackground = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP,
+                        new int[]{ 0x00000000, swatch.getRgb() });
+                parentLayout.setBackground(parentBackground);
+                foodName.setTextColor(swatch.getTitleTextColor());
+                placeName.setTextColor(swatch.getBodyTextColor());
+            }
+        });
     }
     
     private void initRecyclerViews() {

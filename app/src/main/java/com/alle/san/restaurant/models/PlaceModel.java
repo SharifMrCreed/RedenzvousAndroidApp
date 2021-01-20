@@ -8,20 +8,23 @@ public class PlaceModel implements Parcelable {
     private String name;
     private String locale;
     private String localePics;
+    int drawable;
 
     public PlaceModel() {
     }
 
-    public PlaceModel(String name, String locale, String localePics) {
+    public PlaceModel(String name, String locale, String localePics, int drawable) {
         this.name = name;
         this.locale = locale;
         this.localePics = localePics;
+        this.drawable = drawable;
     }
     
     protected PlaceModel(Parcel in) {
         name = in.readString();
         locale = in.readString();
         localePics = in.readString();
+        drawable = in.readInt();
     }
     
     public static final Creator<PlaceModel> CREATOR = new Creator<PlaceModel>() {
@@ -35,6 +38,14 @@ public class PlaceModel implements Parcelable {
             return new PlaceModel[size];
         }
     };
+    
+    public int getDrawable() {
+        return drawable;
+    }
+    
+    public void setDrawable(int drawable) {
+        this.drawable = drawable;
+    }
     
     public String getName() {
         return name;
@@ -71,5 +82,6 @@ public class PlaceModel implements Parcelable {
         dest.writeString(name);
         dest.writeString(locale);
         dest.writeString(localePics);
+        dest.writeInt(drawable);
     }
 }

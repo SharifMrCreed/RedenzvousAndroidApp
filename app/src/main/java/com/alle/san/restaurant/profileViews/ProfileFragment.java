@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import static com.alle.san.restaurant.utilities.Globals.ACCOUNTS_FRAGMENT_TAG;
+import static com.alle.san.restaurant.utilities.Globals.SIGN_IN_FRAGMENT_TAG;
 
 
 public class ProfileFragment extends Fragment {
@@ -61,7 +62,7 @@ public class ProfileFragment extends Fragment {
     private void initClicks() {
         bLogOut.setOnClickListener(view -> {
             FirebaseAuth.getInstance().signOut();
-            viewChanger.openFragmentCalled(ACCOUNTS_FRAGMENT_TAG);
+            viewChanger.openFragmentCalled(SIGN_IN_FRAGMENT_TAG);
         });
 
         bEdit.setOnClickListener(view -> {

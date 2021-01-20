@@ -1,5 +1,17 @@
 package com.alle.san.restaurant.utilities;
 
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
+
+import com.alle.san.restaurant.R;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class Globals {
     // fragments
     public static final String ACCOUNTS_FRAGMENT_TAG = "Accounts Fragment";
@@ -24,6 +36,39 @@ public class Globals {
             "Pizza", "Fries", "Burger", "Pasta", "Fries", "Beef", "Ice cream", "Salad",
             "Chicken", "Rice", "Milk Shake", "Donuts", "Cocktails", "Wines", "Beer", "Juice"
     };
+    public static Bitmap getBitmapAt(URL url){
+        final Bitmap[] bitmap = {null};
+            AsyncTask<URL, ViewChanger, Bitmap> task = new AsyncTask<URL, ViewChanger, Bitmap>(){
+    
+                @Override
+                protected Bitmap doInBackground(URL... urls) {
+                    Bitmap image = null;
+                    try {
+                        URL url = urls[0];
+                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                        connection.setDoInput(true);
+                        connection.connect();
+                        InputStream inputStream = connection.getInputStream();
+                        
+                        image = BitmapFactory.decodeStream(inputStream);
+                        inputStream.close();
+                        
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    return image;
+                }
+    
+                @Override
+                protected void onPostExecute(Bitmap result) {
+                    super.onPostExecute(result);
+                    bitmap[0] = result;
+                }
+            };
+            task.execute(url);
+    
+        return bitmap[0];
+    }
 
     // fire base nodes
     public static final String FIREBASE_USERS_NODE = "users";

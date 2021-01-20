@@ -1,10 +1,13 @@
 package com.alle.san.restaurant.homeViews;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +23,7 @@ import com.alle.san.restaurant.models.PlaceModel;
 import com.alle.san.restaurant.utilities.Globals;
 import com.bumptech.glide.Glide;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 
@@ -64,16 +68,17 @@ public class PlaceItemFragment extends Fragment {
                 .into(placePic);
         locale.setText(nPlaceModel.getLocale());
         placeName.setText(nPlaceModel.getName());
-//        Palette.from(nPlaceModel.getLocalePics()).generate(palette ->{
-//            Palette.Swatch swatch = palette.getDominantSwatch;
-//            if (swatch != null){
-//                GradientDrawable parentBackground = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP,
-//                        new int[]{ swatch.getRgb() , 0x00000000});
-//                parentLayout.setBackground(parentBackground);
-//                placeName.setTextColor(swatch.getTitleTextColor());
-//                locale.setTextColor(swatch.getBodyTextColor());
-//            }
-//        });
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), nPlaceModel.getDrawable());
+        Palette.from(bitmap).generate(palette ->{
+            Palette.Swatch swatch = palette.getDominantSwatch();
+            if (swatch != null){
+                GradientDrawable parentBackground = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,
+                        new int[]{ swatch.getRgb() , 0x00000000});
+                parentLayout.setBackground(parentBackground);
+                placeName.setTextColor(swatch.getTitleTextColor());
+                locale.setTextColor(swatch.getBodyTextColor());
+            }
+        });
     }
     
     private void initRecyclerViews() {

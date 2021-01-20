@@ -17,14 +17,16 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardView2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivFoodPic"
                 android:layout_width="170dp"
                 android:layout_height="200dp"
                 android:src="@drawable/allecon"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"/>
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -42,7 +44,7 @@
 
             <TextView
                 android:id="@+id/tvFoodName"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:text="Food Name"
