@@ -9,24 +9,21 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.alle.san.restaurant.R;
-import com.alle.san.restaurant.homeViews.FeedFragment;
+import com.alle.san.restaurant.homeViews.FoodFragment;
 import com.alle.san.restaurant.homeViews.PartyFragment;
-import com.alle.san.restaurant.homeViews.PicksFragment;
+import com.alle.san.restaurant.homeViews.PlaceFragment;
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.Objects;
 
 public class HomePagerAdapter extends FragmentStatePagerAdapter {
     int totalTabs;
     TabLayout tabLayout;
-    FeedFragment feedFragment;
+    FoodFragment nFoodFragment;
 
-    public HomePagerAdapter(TabLayout tabLayout, @NonNull FragmentManager fm, int totalTabs, FeedFragment feedFragment ) {
+    public HomePagerAdapter(TabLayout tabLayout, @NonNull FragmentManager fm, int totalTabs, FoodFragment foodFragment) {
         super(fm);
         this.totalTabs=totalTabs;
         this.tabLayout = tabLayout;
-        this.feedFragment = feedFragment;
+        this.nFoodFragment = foodFragment;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -35,9 +32,9 @@ public class HomePagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return feedFragment;
+                return nFoodFragment;
             case 1:
-                return new PicksFragment();
+                return new PlaceFragment();
             case 2:
                 return new PartyFragment();
             default:

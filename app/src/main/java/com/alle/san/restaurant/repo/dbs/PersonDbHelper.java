@@ -1,10 +1,8 @@
-package com.alle.san.restaurant.utilities;
+package com.alle.san.restaurant.repo.dbs;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-import com.alle.san.restaurant.utilities.PersonContract;
 
 
 public class PersonDbHelper extends SQLiteOpenHelper {

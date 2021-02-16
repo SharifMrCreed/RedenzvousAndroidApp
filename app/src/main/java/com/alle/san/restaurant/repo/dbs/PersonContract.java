@@ -1,4 +1,4 @@
-package com.alle.san.restaurant.utilities;
+package com.alle.san.restaurant.repo.dbs;
 
 import android.provider.BaseColumns;
 

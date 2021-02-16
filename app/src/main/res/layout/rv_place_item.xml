@@ -1,65 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardElevation="4dp"
-    android:layout_marginTop="4dp"
+    android:maxHeight="300dp"
     android:layout_marginStart="8dp"
     android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
     android:layout_marginEnd="8dp"
-    android:orientation="vertical">
+    android:layout_marginRight="8dp"
+    android:layout_marginBottom="4dp"
+    android:orientation="horizontal"
+    app:cardElevation="4dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
+        android:id="@+id/parent_linear_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="300dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_placePic"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:scaleType="center"
+            android:src="@drawable/allecon"
+            android:transitionName="feedImageTN" />
+
+
         <LinearLayout
+            android:background="@color/lightGrey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:orientation="horizontal"
-            android:layout_margin="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/materialCardView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="27dp"
-                android:layout_height="27dp"
-                android:layout_margin="8dp"
-                android:src="@drawable/location_icon" />
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/iv_placePic"
+            android:orientation="vertical"
+            android:padding="12dp">
 
             <TextView
                 android:id="@+id/tvPlaceName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:textStyle="bold"
+                android:singleLine="true"
                 android:text="Place Name"
-                style="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="15sp"
+                android:transitionName="feedFoodNameTN" />
+
+
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:singleLine="true"
+                android:textStyle="italic"
+                android:textSize="13sp"
+                android:transitionName="feedPlaceNameTN" />
+
+            <TextView
+                android:id="@+id/tv_vicinity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="vicinity"
+                android:textSize="15sp"
+                android:transitionName="feedPlaceNameTN" />
+
+            <RatingBar
+                android:id="@+id/rating_bar"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
         </LinearLayout>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/ivFoodPic"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:src="@drawable/allecon" />
-
-        </com.google.android.material.card.MaterialCardView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 
 
 </androidx.cardview.widget.CardView>

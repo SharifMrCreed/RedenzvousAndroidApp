@@ -1,12 +1,17 @@
-package com.alle.san.restaurant.models;
+package com.alle.san.restaurant.models.food;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 public class FoodItem implements Parcelable {
     String id;
+    @SerializedName("title")
     String name;
+    @SerializedName("restaurantChain")
     String restaurantName;
+    @SerializedName("readableServingSize")
     String servingSize;
     String image;
     

@@ -10,14 +10,16 @@
         android:id="@+id/chat_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="70dp"
         android:layout_marginEnd="32dp"
-        app:layout_anchor="@id/chat_rv"
-        app:layout_anchorGravity="bottom|right|end"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="70dp"
+        android:background="@color/colorAccent"
         android:src="@drawable/new_chat_icon"
+        app:backgroundTint="@color/colorAccent"
         app:elevation="12dp"
-        app:maxImageSize="30dp"
-        android:layout_marginRight="32dp" />
+        app:layout_anchor="@+id/chat_rv"
+        app:layout_anchorGravity="bottom|right|end"
+        app:maxImageSize="30dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chat_rv"

@@ -13,9 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.alle.san.restaurant.R;
 import com.alle.san.restaurant.adapters.AdRvAdapter;
-import com.alle.san.restaurant.adapters.PlacesRvAdapter;
 import com.alle.san.restaurant.utilities.AdUtil;
-import com.alle.san.restaurant.utilities.PlaceUtil;
 
 
 public class PartyFragment extends Fragment {

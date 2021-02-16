@@ -1,7 +1,10 @@
 package com.alle.san.restaurant.utilities;
 
-import com.alle.san.restaurant.models.FoodItem;
-import com.alle.san.restaurant.models.PlaceModel;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.alle.san.restaurant.models.food.FoodItem;
+import com.alle.san.restaurant.models.place.PlaceItem;
 
 import java.util.ArrayList;
 
@@ -10,7 +13,7 @@ public interface ViewChanger {
     void onSignUpButtonPressed();
     void openFragmentCalled(String fragmentTag);
     void onTopButtonClick(String name);
-    void onFoodItemClick(FoodItem food, ArrayList<FoodItem> foodItems);
-    void onPlaceItemClick(PlaceModel place, ArrayList<PlaceModel> places);
+    void onFoodItemClick(FoodItem food, ArrayList<FoodItem> foodItems, ImageView pic, TextView foodName, TextView placeName);
+    void onPlaceItemClick(PlaceItem place, ArrayList<PlaceItem> places, ImageView pic, TextView placeName);
 
 }

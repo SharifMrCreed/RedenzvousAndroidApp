@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_24"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_favs"
+            android:icon="@drawable/ic_baseline_star_border_24"
+            android:title="@string/menu_favourites" />
+        <item
+            android:id="@+id/nav_messages"
+            android:icon="@drawable/chat"
+            android:title="@string/menu_chats" />
+    </group>
+    <group android:checkableBehavior="single"
+        android:id="@+id/group2">
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/person_icon"
+            android:title="@string/profile" />
+        <item
+
+            android:id="@+id/nav_my_foods"
+            android:icon="@drawable/restaurant"
+            android:title="@string/foods_eaten" />
+        <item
+            android:id="@+id/nav_my_places"
+            android:icon="@drawable/location_icon"
+            android:title="@string/places_visited" />
+    </group>
+    <group
+        android:id="@+id/group3">
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/settings_icon"
+            android:title="@string/action_settings" />
+        <item
+            android:id="@+id/nav_theme"
+            android:icon="@drawable/restaurant"
+            android:title="@string/theme" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/log_out_icon"
+            android:title="@string/log_out" />
+    </group>
+</menu>

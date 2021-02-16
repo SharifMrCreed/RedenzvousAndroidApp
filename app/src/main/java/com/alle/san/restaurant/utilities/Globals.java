@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 
 import com.alle.san.restaurant.R;
+import com.alle.san.restaurant.models.place.PlacePhoto;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,11 +27,24 @@ public class Globals {
     public static final String PROFILE_FRAGMENT_TAG = "Profile Fragment";
     public static final String FOOD_ITEM_FRAGMENT_TAG = "Food Item Fragment";
     public static final String PLACE_ITEM_FRAGMENT_TAG = "Place Item Fragment";
+    
+    //API Data
     public static final String SEARCH_TERM = "Search term";
     public static final String FOOD_ITEM = "Food item";
     public static final String PLACE_ITEM = "Place item";
     public static final String PLACE_ITEMS = "Place items";
     public static final String FOOD_ITEMS = "Food items";
+    public static final String SPOON_BASE_URL = "https://api.spoonacular.com/food/";
+    public static final String PLACES_BASE_URL = "https://maps.googleapis.com/maps/api/place/";
+    public static final String SPOON_API_KEY = "0d3cecb0a6604900b374d10acf83c87b";
+    public static final String PLACE_API_KEY = "AIzaSyCy6sGzwvqUE0BIU7JsuLHgz_hgT-p3FQ4";
+    public static final int RESULT_NUMBER = 500;
+    public static final String LOCATION = "0.3476,32.5825";
+    public static final int  RADIUS = 10000;
+    public static final String PROMINENCE = "prominence";
+    public static final String TYPE = "restaurant";
+    
+    
     
     public static String[] foodItems = new String[]{
             "Pizza", "Fries", "Burger", "Pasta", "Fries", "Beef", "Ice cream", "Salad",
@@ -68,6 +82,14 @@ public class Globals {
             task.execute(url);
     
         return bitmap[0];
+    }
+    
+    public static String getLink(PlacePhoto photo) {
+        String link = "";
+        link += PLACES_BASE_URL;
+        link += "photo?maxheight=300&photoreference="+photo.getPhotoReference();
+        link += "&key=" + PLACE_API_KEY;
+        return link;
     }
 
     // fire base nodes

@@ -3,6 +3,7 @@ package com.alle.san.restaurant.homeViews;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -12,6 +13,7 @@ import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,14 +22,13 @@ import android.widget.TextView;
 
 import com.alle.san.restaurant.R;
 import com.alle.san.restaurant.adapters.SimilarRvAdapter;
-import com.alle.san.restaurant.models.FoodItem;
+import com.alle.san.restaurant.models.food.FoodItem;
 import com.alle.san.restaurant.utilities.Globals;
 import com.bumptech.glide.Glide;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class FoodItemFragment extends Fragment {
     
@@ -47,6 +48,10 @@ public class FoodItemFragment extends Fragment {
             nFoodItem = bundle.getParcelable(Globals.FOOD_ITEM);
             nFoodItems = bundle.getParcelableArrayList(Globals.FOOD_ITEMS);
         }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            setSharedElementEnterTransition(TransitionInflater.from(getContext()).inflateTransition(R.transition.enter_transition));
+            setSharedElementReturnTransition(TransitionInflater.from(getContext()).inflateTransition(R.transition.enter_transition));
+        }
         
     }
     
@@ -54,7 +59,7 @@ public class FoodItemFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_food_item, container, false);
-        foodPic = view.findViewById(R.id.imageView);
+        foodPic = view.findViewById(R.id.user_image);
         foodName = view.findViewById(R.id.tvFoodName);
         placeName = view.findViewById(R.id.tvPlaceName);
         sameMenu = view.findViewById(R.id.rv_same_place);
@@ -82,7 +87,7 @@ public class FoodItemFragment extends Fragment {
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.aa);
         }
         Palette.from(bitmap).generate(palette ->{
-            Palette.Swatch swatch = palette.getDominantSwatch();
+            Palette.Swatch swatch = palette.getVibrantSwatch();
             if (swatch != null){
                 GradientDrawable parentBackground = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP,
                         new int[]{ 0x00000000, swatch.getRgb() });

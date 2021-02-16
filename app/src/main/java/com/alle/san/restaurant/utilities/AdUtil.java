@@ -4,7 +4,6 @@ import android.net.Uri;
 
 import com.alle.san.restaurant.R;
 import com.alle.san.restaurant.models.AdModel;
-import com.alle.san.restaurant.models.PlaceModel;
 
 import java.util.ArrayList;
 

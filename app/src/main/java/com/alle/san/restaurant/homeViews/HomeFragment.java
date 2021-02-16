@@ -18,7 +18,7 @@ import static com.alle.san.restaurant.utilities.Globals.SEARCH_TERM;
 
 public class HomeFragment extends Fragment {
 
-    FeedFragment feedFragment = new FeedFragment();
+    FoodFragment nFoodFragment = new FoodFragment();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class HomeFragment extends Fragment {
         if (bundle != null){
             Bundle arg = new Bundle();
             arg.putString(SEARCH_TERM, bundle.getString(SEARCH_TERM));
-            feedFragment.setArguments(arg);
+            nFoodFragment.setArguments(arg);
         }
 
     }
@@ -42,8 +42,9 @@ public class HomeFragment extends Fragment {
 
         setTabData(nTabLayout);
         nTabLayout.setupWithViewPager(nViewPager);
-        final HomePagerAdapter adapter = new HomePagerAdapter(nTabLayout, getChildFragmentManager(), nTabLayout.getTabCount(), feedFragment);
+        final HomePagerAdapter adapter = new HomePagerAdapter(nTabLayout, getChildFragmentManager(), nTabLayout.getTabCount(), nFoodFragment);
         nViewPager.setAdapter(adapter);
+        nTabLayout.selectTab(nTabLayout.getTabAt(1));
 
         nViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(nTabLayout));
 

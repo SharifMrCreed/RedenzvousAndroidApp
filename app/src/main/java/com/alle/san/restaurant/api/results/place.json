@@ -1,0 +1,875 @@
+{
+  "html_attributions": [],
+  "next_page_token": "ATtYBwIH290b31nIOLdbhBkelbRcMtenC4jWMwgJbT2iZ98JRl8XHfrdxb1G6bVJMoe2-yEZ3lyxwhdP5nuP0PMyPlSIsPKf-jTlsaLc3axfvSifaseNFUuZ8ihTBEOHXi43ffg8VJa5wRRizBnzI6zCeN5mo3VFPpIhT7O6lwWhtUt56makS9ixbhI4CbXvWvSl2cunOMblBN4Z1-XuO-SqvjpGrVOyLa1TWxfmgVTcYoHWEZbIVrzV-tIu04lbLAHMDta86S8qBDZ9Wwnbu6rNJNWQ968Q0gLC0kNCaH0oAqTkSJrocOFg6D0isk7UiUrhCFdD31b9biEnLTXgxUufwXo5XlcGcxZXP2-HvScCgP4gS10i9Xs-NmBp_-Hj2nBzu6b-_4BtXbTxnE9wIZJNeQMYyJ6yVMQ9EvVGR9uhwCc54vJGEXu8kyX0GAuo",
+  "results": [
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": 0.3469738,
+          "lng": 32.583401
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 0.348405380291502,
+            "lng": 32.5848081302915
+          },
+          "southwest": {
+            "lat": 0.3457074197084979,
+            "lng": 32.5821101697085
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "name": "X",
+      "opening_hours": {
+        "open_now": true
+      },
+      "photos": [
+        {
+          "height": 2988,
+          "html_attributions": [
+            "\u003ca href=\"https://maps.google.com/maps/contrib/111496345953918394783\"\u003eSylas Ruhweza\u003c/a\u003e"
+          ],
+          "photo_reference": "ATtYBwKKAi8Q5bw1_lHMszvZYJ4QLR0UMO_HM2VObFolqyYuFE17T9v7EVhDPubA6_P1WDhFG4wN7AISEjZG2OC719jGYrK2PVZZxSm2cpRZm8SmqZnzRyNGAMHlEh32JD8YksM9r5uknA2EXI_9yW-GNqlQXeeR3ghRjTS730X69Wd81OQ4",
+          "width": 5312
+        }
+      ],
+      "place_id": "ChIJEYcc4A27fRcR1zi92oH2fEs",
+      "plus_code": {
+        "compound_code": "8HWM+Q9 Kampala, Uganda",
+        "global_code": "6GGJ8HWM+Q9"
+      },
+      "rating": 3.8,
+      "reference": "ChIJEYcc4A27fRcR1zi92oH2fEs",
+      "scope": "GOOGLE",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "store",
+        "establishment"
+      ],
+      "user_ratings_total": 19,
+      "vicinity": "Next to maimood, Kampala"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": 0.3435514,
+          "lng": 32.587249
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 0.3447472302915021,
+            "lng": 32.5884850802915
+          },
+          "southwest": {
+            "lat": 0.342049269708498,
+            "lng": 32.5857871197085
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "name": "Humphrey's Diner",
+      "place_id": "ChIJr3qNWKm7fRcRllVfEQSaTaQ",
+      "plus_code": {
+        "compound_code": "8HVP+CV Kampala, Uganda",
+        "global_code": "6GGJ8HVP+CV"
+      },
+      "reference": "ChIJr3qNWKm7fRcRllVfEQSaTaQ",
+      "scope": "GOOGLE",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "vicinity": "Makerere kagugube opp Pearl View Hostel between Nana & LDC, Kampala"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": 0.3436147,
+          "lng": 32.5911329
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 0.3449978302915021,
+            "lng": 32.5924629802915
+          },
+          "southwest": {
+            "lat": 0.342299869708498,
+            "lng": 32.5897650197085
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "name": "Jamaican Jerky",
+      "opening_hours": {
+        "open_now": true
+      },
+      "place_id": "ChIJVVVVVVW6fRcRMsyye16NTIY",
+      "plus_code": {
+        "compound_code": "8HVR+CF Kampala, Uganda",
+        "global_code": "6GGJ8HVR+CF"
+      },
+      "rating": 3,
+      "reference": "ChIJVVVVVVW6fRcRMsyye16NTIY",
+      "scope": "GOOGLE",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "user_ratings_total": 3,
+      "vicinity": "Old Kira Road, Kampala"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": 0.3382754000000001,
+          "lng": 32.58658379999999
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 0.3397535302915021,
+            "lng": 32.5878187302915
+          },
+          "southwest": {
+            "lat": 0.337055569708498,
+            "lng": 32.5851207697085
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "name": "Nawab Asian Bistro",
+      "opening_hours": {
+        "open_now": true
+      },
+      "photos": [
+        {
+          "height": 2848,
+          "html_attributions": [
+            "\u003ca href=\"https://maps.google.com/maps/contrib/104645822154977493961\"\u003eNawab Asian Bistro\u003c/a\u003e"
+          ],
+          "photo_reference": "ATtYBwJzbyA1Dg7EgnKCFQ32NQM4zuYQBMLek0nJNrjpwH_mwe_nsI_MOOnTLnU2WwWGjNxb97Jx-YyV8mfg9n9ukxonkiF4AptHx2xwaTgnZ-Fr2BnDeuydV_ykYMUpOlVD8GH7Q-8ruGV7MtrtDoEp7h0thFKitSLCRHZol1CcZUD4Ipgg",
+          "width": 4272
+        }
+      ],
+      "place_id": "ChIJ____Qqa7fRcRk042K5Fc_p4",
+      "plus_code": {
+        "compound_code": "8HQP+8J Kampala, Uganda",
+        "global_code": "6GGJ8HQP+8J"
+      },
+      "price_level": 2,
+      "rating": 4.2,
+      "reference": "ChIJ____Qqa7fRcRk042K5Fc_p4",
+      "scope": "GOOGLE",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "user_ratings_total": 459,
+      "vicinity": "Acacia Mall, Sturrock Road, Kampala"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": 0.3385837,
+          "lng": 32.5880915
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 0.339988480291502,
+            "lng": 32.5893892302915
+          },
+          "southwest": {
+            "lat": 0.3372905197084979,
+            "lng": 32.5866912697085
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "name": "Bistro",
+      "opening_hours": {
+        "open_now": true
+      },
+      "photos": [
+        {
+          "height": 3120,
+          "html_attributions": [
+            "\u003ca href=\"https://maps.google.com/maps/contrib/106036706701941320578\"\u003eElison Twinomugisha\u003c/a\u003e"
+          ],
+          "photo_reference": "ATtYBwLByYEREoO71DmetNTCdTqVGlskurHOzCy0Rlq-ywkIvZpngUwfdKZfUvlQPvcHxVEeHXqXnXLlpsoQIiSrOWb8y7YIY2KzLjn1gaO1xYLz-qHo1rA4JIXHtL9EkC7IQ_AUz3-UuRkTI7_QXPk9q07fjmF6d_KbVoUO2zeOrRgpvEhE",
+          "width": 4160
+        }
+      ],
+      "place_id": "ChIJHTxceqa7fRcRQboLfx4fCtE",
+      "plus_code": {
+        "compound_code": "8HQQ+C6 Kampala, Uganda",
+        "global_code": "6GGJ8HQQ+C6"
+      },
+      "price_level": 2,
+      "rating": 4.3,
+      "reference": "ChIJHTxceqa7fRcRQboLfx4fCtE",
+      "scope": "GOOGLE",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "user_ratings_total": 377,
+      "vicinity": "Kololo Hill Drive, Kampala"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": 0.3382162,
+          "lng": 32.5868728
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 0.3395053802915021,
+            "lng": 32.5882752302915
+          },
+          "southwest": {
+            "lat": 0.336807419708498,
+            "lng": 32.58557726970851
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "name": "KFC Acacia",
+      "opening_hours": {
+        "open_now": true
+      },
+      "photos": [
+        {
+          "height": 2268,
+          "html_attributions": [
+            "\u003ca href=\"https://maps.google.com/maps/contrib/101979422812678439929\"\u003eDonMirza Gaming\u003c/a\u003e"
+          ],
+          "photo_reference": "ATtYBwJiGFwGF9Ebl9IHBF0ube6Am443b3qV6NA_WHDSQMIVkEc1mp37El0LxVJD5u5xl1tmWYvNw53RH6YLq2D5zYyWnBXhTa1wWd8bHg7Y-AebcguObViCwTwxOkP7BXp3nud19zYr1d5uBRNLNTspEetLioa49MGZgFtdsN87c74r0nX8",
+          "width": 4032
+        }
+      ],
+      "place_id": "ChIJeSJCaKa7fRcRD9FG_C0EDVA",
+      "plus_code": {
+        "compound_code": "8HQP+7P Kampala, Uganda",
+        "global_code": "6GGJ8HQP+7P"
+      },
+      "rating": 4.2,
+      "reference": "ChIJeSJCaKa7fRcRD9FG_C0EDVA",
+      "scope": "GOOGLE",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "user_ratings_total": 789,
+      "vicinity": "Kampala"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": 0.3388514999999999,
+          "lng": 32.5883329
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 0.340176180291502,
+            "lng": 32.5895624302915
+          },
+          "southwest": {
+            "lat": 0.3374782197084979,
+            "lng": 32.5868644697085
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "name": "Quepasa",
+      "opening_hours": {
+        "open_now": true
+      },
+      "photos": [
+        {
+          "height": 2340,
+          "html_attributions": [
+            "\u003ca href=\"https://maps.google.com/maps/contrib/107609606805912301561\"\u003eHugo Hotte\u003c/a\u003e"
+          ],
+          "photo_reference": "ATtYBwKsVw4C-ElpAH-aAx86QYRbmrLydvSQ-qT1seKwCw9Ps4yYiXCl6C5WMIq1kCn5096FMMILiHYyKCQmYv9t1mKVHU9ubugBNR_A6UbvMh9M93Y7zR4d0D7MemJs4tfHgHbj5BG0LrVw04D90e_gpsBpKnj0VkWDrsitFQj557kTmC-A",
+          "width": 4160
+        }
+      ],
+      "place_id": "ChIJ7VY44KW7fRcRpXHEFLVMwlU",
+      "plus_code": {
+        "compound_code": "8HQQ+G8 Kampala, Uganda",
+        "global_code": "6GGJ8HQQ+G8"
+      },
+      "price_level": 2,
+      "rating": 4,
+      "reference": "ChIJ7VY44KW7fRcRpXHEFLVMwlU",
+      "scope": "GOOGLE",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "user_ratings_total": 366,
+      "vicinity": "Kisementi Gardens, Kampala"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": 0.3371654,
+          "lng": 32.585336
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 0.3386775802915021,
+            "lng": 32.5867033302915
+          },
+          "southwest": {
+            "lat": 0.335979619708498,
+            "lng": 32.5840053697085
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "name": "Hunza Darbar",
+      "opening_hours": {
+        "open_now": true
+      },
+      "photos": [
+        {
+          "height": 600,
+          "html_attributions": [
+            "\u003ca href=\"https://maps.google.com/maps/contrib/117113321527830737066\"\u003edeedar ali\u003c/a\u003e"
+          ],
+          "photo_reference": "ATtYBwIWLWYZy3nuxPPLjuCmisPw1HLmYu4wdqZZ43jJnc2JcupQtMYbssfuMliWRDUdZw5yHwBhetecl51B_ll3qsZXrluNhOiehDKWmFxuQeTaJmyPupI6Kgu2d3oOqqFyNavJTVmOoZ5LMVDC652vmdFu_ihbXGmks_xsZXiqwugT8CCA",
+          "width": 800
+        }
+      ],
+      "place_id": "ChIJwZ1tBae7fRcRfmLPMffJLOg",
+      "plus_code": {
+        "compound_code": "8HPP+V4 Kampala, Uganda",
+        "global_code": "6GGJ8HPP+V4"
+      },
+      "price_level": 2,
+      "rating": 4.2,
+      "reference": "ChIJwZ1tBae7fRcRfmLPMffJLOg",
+      "scope": "GOOGLE",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "user_ratings_total": 52,
+      "vicinity": "Windsor Loop Road, Kampala"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": 0.3440176999999999,
+          "lng": 32.59286839999999
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 0.345335630291502,
+            "lng": 32.5942132802915
+          },
+          "southwest": {
+            "lat": 0.3426376697084979,
+            "lng": 32.5915153197085
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "name": "KweNu Juice & Salad Bar",
+      "opening_hours": {
+        "open_now": false
+      },
+      "photos": [
+        {
+          "height": 4949,
+          "html_attributions": [
+            "\u003ca href=\"https://maps.google.com/maps/contrib/102465175168124860663\"\u003eKweNu Juice &amp; Salad Bar\u003c/a\u003e"
+          ],
+          "photo_reference": "ATtYBwKR4RE6vIheL3RFALbGnqtMIHiA5E6ETa0U3ZjRqcN1iIzer3_dGiIB_NNFYhTiyMkigco8R1GIh94UJWUFeRqmFQCuu7wWUv-tyfhOsXDNsZClK0SPqtyWnXefrl_5WBw1T9KMevIG5wnXkUZ_OVIfdIlSq2V4VKhcNAhvf91pAapT",
+          "width": 3637
+        }
+      ],
+      "place_id": "ChIJ4XRClGm6fRcRYiZkN-tYaj0",
+      "plus_code": {
+        "compound_code": "8HVV+J4 Kampala, Uganda",
+        "global_code": "6GGJ8HVV+J4"
+      },
+      "rating": 4.4,
+      "reference": "ChIJ4XRClGm6fRcRYiZkN-tYaj0",
+      "scope": "GOOGLE",
+      "types": [
+        "restaurant",
+        "food",
+        "health",
+        "point_of_interest",
+        "store",
+        "establishment"
+      ],
+      "user_ratings_total": 74,
+      "vicinity": "Plot 13 Kenneth Dale, Kampala"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": 0.3452746,
+          "lng": 32.5710224
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 0.346623580291502,
+            "lng": 32.57237138029149
+          },
+          "southwest": {
+            "lat": 0.3439256197084979,
+            "lng": 32.5696734197085
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "name": "Akafo Restaurant",
+      "place_id": "ChIJuUlR0hy7fRcRMaDjBXwnfpc",
+      "plus_code": {
+        "compound_code": "8HWC+4C Kampala, Uganda",
+        "global_code": "6GGJ8HWC+4C"
+      },
+      "reference": "ChIJuUlR0hy7fRcRMaDjBXwnfpc",
+      "scope": "GOOGLE",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "vicinity": "Uganda"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": 0.3365278,
+          "lng": 32.5877292
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 0.3378534302915021,
+            "lng": 32.5890129302915
+          },
+          "southwest": {
+            "lat": 0.335155469708498,
+            "lng": 32.5863149697085
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "name": "Java House - Acacia Place",
+      "opening_hours": {
+        "open_now": true
+      },
+      "photos": [
+        {
+          "height": 3120,
+          "html_attributions": [
+            "\u003ca href=\"https://maps.google.com/maps/contrib/114243828448874950828\"\u003eGeoffrey Ekongot\u003c/a\u003e"
+          ],
+          "photo_reference": "ATtYBwJb0quPtkN72N_cJGXFVf9Uz_FrDHV9qFBfrSCJ9hS-lkoSTgh48VbUfG_Ns-X-_T69diZloX6GG_0DWC3V9gin6czFqjLabf4l8Fuk4JsA2QvfZWKzOzM-YQbV_7diue3-jtwVWJmsIlSnK4CpxriT_LYrrItYRbjBTyCak2boBcc_",
+          "width": 4160
+        }
+      ],
+      "place_id": "ChIJx3C1o6a7fRcRlOR7HR_1kvI",
+      "plus_code": {
+        "compound_code": "8HPQ+J3 Kampala, Uganda",
+        "global_code": "6GGJ8HPQ+J3"
+      },
+      "price_level": 2,
+      "rating": 4.1,
+      "reference": "ChIJx3C1o6a7fRcRlOR7HR_1kvI",
+      "scope": "GOOGLE",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "user_ratings_total": 415,
+      "vicinity": "Place, Acacia, Sixth Street, Kampala"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": 0.3408815,
+          "lng": 32.5712506
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 0.342231130291502,
+            "lng": 32.5726007302915
+          },
+          "southwest": {
+            "lat": 0.339533169708498,
+            "lng": 32.5699027697085
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "name": "PORK TALK UGANDA LIMITED",
+      "photos": [
+        {
+          "height": 4160,
+          "html_attributions": [
+            "\u003ca href=\"https://maps.google.com/maps/contrib/104324878614586330231\"\u003eKIRABO PAULINE#Cutepola\u003c/a\u003e"
+          ],
+          "photo_reference": "ATtYBwIH012zETTQq8A2AyhfcOtrKcNUgwl2ddIJ_VxD0Z0C9MBUhclvVSKYwD2B16zJyklWUS6QZcRneLj0W424i28Nr8pqezkxRJuiagO4-zH9jURWRHSSQYuCvzU-dB4LGSMiT7bPJTxENXBFVjXLD_eW0z-QNlQkCZ_7kiT1sSDrUG6d",
+          "width": 3120
+        }
+      ],
+      "place_id": "ChIJiW7eyhq7fRcRQxyMWluCKz0",
+      "plus_code": {
+        "compound_code": "8HRC+9G Kampala, Uganda",
+        "global_code": "6GGJ8HRC+9G"
+      },
+      "rating": 4,
+      "reference": "ChIJiW7eyhq7fRcRQxyMWluCKz0",
+      "scope": "GOOGLE",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "user_ratings_total": 1,
+      "vicinity": "Makerere Hill Road Nakulabye Bombo Road, Kampala"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": 0.3475964000000001,
+          "lng": 32.5825196
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 0.3489366802915021,
+            "lng": 32.5837874802915
+          },
+          "southwest": {
+            "lat": 0.346238719708498,
+            "lng": 32.5810895197085
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "name": "Musab osman",
+      "photos": [
+        {
+          "height": 1080,
+          "html_attributions": [
+            "\u003ca href=\"https://maps.google.com/maps/contrib/104694117495896610648\"\u003eAbdikaafi Ak\u003c/a\u003e"
+          ],
+          "photo_reference": "ATtYBwK3-hyQ9XXCfZLQ9W_7ustogilANarSehNnlbeAEe-MOkubMPUzfy9GfFoXW-g99UP5IlE26udwQD-d1aiott4tUyZNog7OymOkcOvITJM457UVhQDDlIssmrz9hb77aR9SC6V6cD7fg0eKoNxHcsMQDtvXvfsv2fzu1Qecr2202AWH",
+          "width": 1080
+        }
+      ],
+      "place_id": "ChIJRzxl3I-7fRcRb2reWTVmm0w",
+      "plus_code": {
+        "compound_code": "8HXM+22 Kampala, Uganda",
+        "global_code": "6GGJ8HXM+22"
+      },
+      "reference": "ChIJRzxl3I-7fRcRb2reWTVmm0w",
+      "scope": "GOOGLE",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "vicinity": "Kampala"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": 0.3475964000000001,
+          "lng": 32.5825197
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 0.3489366802915021,
+            "lng": 32.5837875302915
+          },
+          "southwest": {
+            "lat": 0.346238719708498,
+            "lng": 32.5810895697085
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "name": "VACANCY FOR CLEANER JOB",
+      "place_id": "ChIJxQzOgse7fRcRM38NuA9d57U",
+      "plus_code": {
+        "compound_code": "8HXM+22 Kampala, Uganda",
+        "global_code": "6GGJ8HXM+22"
+      },
+      "reference": "ChIJxQzOgse7fRcRM38NuA9d57U",
+      "scope": "GOOGLE",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "vicinity": "Kampala"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": 0.3475964000000001,
+          "lng": 32.5825197
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 0.3489366802915021,
+            "lng": 32.5837875302915
+          },
+          "southwest": {
+            "lat": 0.346238719708498,
+            "lng": 32.5810895697085
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "name": "Tate Classic Foods",
+      "place_id": "ChIJV4vL9dC7fRcRMWJyHKIadV4",
+      "plus_code": {
+        "compound_code": "8HXM+22 Kampala, Uganda",
+        "global_code": "6GGJ8HXM+22"
+      },
+      "reference": "ChIJV4vL9dC7fRcRMWJyHKIadV4",
+      "scope": "GOOGLE",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "vicinity": "Dowinton road, Next To National Theatre, Kampala"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": 0.3475964000000001,
+          "lng": 32.5825197
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 0.3489366802915021,
+            "lng": 32.5837875302915
+          },
+          "southwest": {
+            "lat": 0.346238719708498,
+            "lng": 32.5810895697085
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "name": "fishing",
+      "place_id": "ChIJj2zkqV27fRcRrcRoA_gkTRI",
+      "plus_code": {
+        "compound_code": "8HXM+22 Kampala, Uganda",
+        "global_code": "6GGJ8HXM+22"
+      },
+      "reference": "ChIJj2zkqV27fRcRrcRoA_gkTRI",
+      "scope": "GOOGLE",
+      "types": [
+        "meal_takeaway",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "vicinity": "Kampala"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": 0.3475964000000001,
+          "lng": 32.5825197
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 0.3489366802915021,
+            "lng": 32.5837875302915
+          },
+          "southwest": {
+            "lat": 0.346238719708498,
+            "lng": 32.5810895697085
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "name": "Delicious Bite Restaurant And Takeaway",
+      "photos": [
+        {
+          "height": 251,
+          "html_attributions": [
+            "\u003ca href=\"https://maps.google.com/maps/contrib/107289225973809220963\"\u003eOwembabazi Barnett\u003c/a\u003e"
+          ],
+          "photo_reference": "ATtYBwLrEiONtMT4OLCMNy_lbcCd2ugteS57A4esJkWFETXhcIZxN7xT6tMRYFQmOzN9au935g-73Vp8dzpeGkVHvvYY2QXoRnTEjUsMoXyr8xG5K81Xmt2URuQ2OOLHaNVfkCTQseEi51MbYpRHFu1zd09EAGQtSizeBBOCbsjxPRYwRDQb",
+          "width": 480
+        }
+      ],
+      "place_id": "ChIJ7agfBaC7fRcRMHUYEwT6Qno",
+      "plus_code": {
+        "compound_code": "8HXM+22 Kampala, Uganda",
+        "global_code": "6GGJ8HXM+22"
+      },
+      "reference": "ChIJ7agfBaC7fRcRMHUYEwT6Qno",
+      "scope": "GOOGLE",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "vicinity": "Makerere University, Kampala, Chikoni Near, Kampala"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": 0.3475964000000001,
+          "lng": 32.5825197
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 0.3489366802915021,
+            "lng": 32.5837875302915
+          },
+          "southwest": {
+            "lat": 0.346238719708498,
+            "lng": 32.5810895697085
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "name": "Acio Sarah",
+      "place_id": "ChIJxRC-WeO7fRcRp2naRGzwhcY",
+      "plus_code": {
+        "compound_code": "8HXM+22 Kampala, Uganda",
+        "global_code": "6GGJ8HXM+22"
+      },
+      "reference": "ChIJxRC-WeO7fRcRp2naRGzwhcY",
+      "scope": "GOOGLE",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "vicinity": "kajjanse, Kampala"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": 0.3475964000000001,
+          "lng": 32.5825197
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 0.3489366802915021,
+            "lng": 32.5837875302915
+          },
+          "southwest": {
+            "lat": 0.346238719708498,
+            "lng": 32.5810895697085
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "name": "Shoprite",
+      "place_id": "ChIJH1mtfbO7fRcRN1ww7xl7lyQ",
+      "plus_code": {
+        "compound_code": "8HXM+22 Kampala, Uganda",
+        "global_code": "6GGJ8HXM+22"
+      },
+      "reference": "ChIJH1mtfbO7fRcRN1ww7xl7lyQ",
+      "scope": "GOOGLE",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "vicinity": "Kampala"
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": 0.3475964000000001,
+          "lng": 32.5825197
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 0.3489366802915021,
+            "lng": 32.5837875302915
+          },
+          "southwest": {
+            "lat": 0.346238719708498,
+            "lng": 32.5810895697085
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      "name": "Abdifatah Elmi weheliye",
+      "place_id": "ChIJhToEBq67fRcRDGGBR8hynZ0",
+      "plus_code": {
+        "compound_code": "8HXM+22 Kampala, Uganda",
+        "global_code": "6GGJ8HXM+22"
+      },
+      "rating": 5,
+      "reference": "ChIJhToEBq67fRcRDGGBR8hynZ0",
+      "scope": "GOOGLE",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "user_ratings_total": 1,
+      "vicinity": "Kampala"
+    }
+  ],
+  "status": "OK"
+}

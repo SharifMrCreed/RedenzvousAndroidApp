@@ -5,14 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alle.san.restaurant.R;
 import com.alle.san.restaurant.models.AdModel;
-import com.alle.san.restaurant.models.PlaceModel;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -49,7 +47,7 @@ public class AdRvAdapter extends RecyclerView.Adapter<AdRvAdapter.PlaceViewHolde
         ImageView PlacePic;
         public PlaceViewHolder(@NonNull View itemView) {
             super(itemView);
-            PlacePic = itemView.findViewById(R.id.ivFoodPic);
+            PlacePic = itemView.findViewById(R.id.iv_placePic);
         }
 
         public void Bind (int position){

@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alle.san.restaurant.R;
-import com.alle.san.restaurant.models.FoodItem;
+import com.alle.san.restaurant.models.food.FoodItem;
 import com.alle.san.restaurant.utilities.ViewChanger;
 import com.bumptech.glide.Glide;
 
@@ -62,7 +62,7 @@ public class SimilarRvAdapter extends RecyclerView.Adapter<SimilarRvAdapter.Feed
             super(itemView);
             foodName = itemView.findViewById(R.id.tvFoodName);
             placeName = itemView.findViewById(R.id.tvPlaceName);
-            foodPic = itemView.findViewById(R.id.ivFoodPic);
+            foodPic = itemView.findViewById(R.id.iv_placePic);
             this.foodItems = foodItems;
             this.viewChanger = viewChanger;
         }
@@ -76,7 +76,7 @@ public class SimilarRvAdapter extends RecyclerView.Adapter<SimilarRvAdapter.Feed
                     .fallback(R.drawable.image_icon)
                     .error(R.drawable.broken_image_icon)
                     .into(foodPic);
-            itemView.setOnClickListener(v -> viewChanger.onFoodItemClick(foodItem, foodItems));
+            itemView.setOnClickListener(v -> viewChanger.onFoodItemClick(foodItem, foodItems, foodPic, foodName, placeName));
         }
 
     }

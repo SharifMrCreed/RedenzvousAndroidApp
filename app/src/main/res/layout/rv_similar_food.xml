@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="4dp"
     android:layout_marginBottom="4dp"
     android:layout_marginStart="10dp"
@@ -17,62 +18,52 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardView2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/ivFoodPic"
-                android:layout_width="170dp"
-                android:layout_height="200dp"
+                android:id="@+id/iv_placePic"
+                android:layout_width="150dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:scaleType="center"
                 android:src="@drawable/allecon"
-                android:scaleType="centerCrop"
-                android:layout_gravity="center"/>
+                android:transitionName="feedImageTN" />
 
         </com.google.android.material.card.MaterialCardView>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/lightGrey"
+            android:padding="8dp">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="27dp"
-                android:layout_height="27dp"
-                android:layout_margin="4dp"
-                android:src="@drawable/restaurant_menu" />
 
             <TextView
                 android:id="@+id/tvFoodName"
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
                 android:text="Food Name"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center">
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="27dp"
-                android:layout_height="27dp"
-                android:layout_margin="4dp"
-                android:src="@drawable/location_icon" />
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:transitionName="feedFoodNameTN" />
 
 
             <TextView
                 android:id="@+id/tvPlaceName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
                 android:text="Place Name"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
+                android:layout_marginTop="8dp"
+                android:textSize="13sp"
+                android:transitionName="feedPlaceNameTN"
+                android:drawablePadding="4dp"
+                android:drawableTint="@color/colorAccent"
+                app:drawableLeftCompat="@drawable/location_icon"
+                app:drawableStartCompat="@drawable/location_icon" />
+
+
         </LinearLayout>
 
     </LinearLayout>
