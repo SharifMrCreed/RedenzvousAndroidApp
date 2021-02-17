@@ -21,6 +21,7 @@ import com.alle.san.restaurant.adapters.TopScrollRvAdapter;
 import com.alle.san.restaurant.models.food.FoodItem;
 import com.alle.san.restaurant.models.food.FoodResult;
 import com.alle.san.restaurant.repo.RetroFetch;
+import com.alle.san.restaurant.utilities.ApiParams;
 import com.alle.san.restaurant.utilities.Globals;
 
 import java.util.ArrayList;
@@ -70,11 +71,11 @@ public class FoodFragment extends Fragment {
         }
         
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Globals.SPOON_BASE_URL)
+                .baseUrl(ApiParams.SPOON_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RetroFetch retroFetch = retrofit.create(RetroFetch.class);
-        Call<FoodResult> call = retroFetch.getMenuItems(Globals.SPOON_API_KEY, searchTerm, Globals.RESULT_NUMBER);
+        Call<FoodResult> call = retroFetch.getMenuItems(ApiParams.SPOON_API_KEY, searchTerm, ApiParams.RESULT_NUMBER);
         progressBar.setVisibility(View.VISIBLE);
         call.enqueue(new Callback<FoodResult>() {
             @Override

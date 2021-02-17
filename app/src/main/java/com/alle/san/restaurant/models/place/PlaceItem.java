@@ -14,13 +14,13 @@ public class PlaceItem implements Parcelable {
     PlacePhoto[] photos;
     String[] types;
     @SerializedName("user_ratings_total")
-    double totalRating;
+    int totalRating;
     String vicinity;
     
     public PlaceItem() {
     }
     
-    public PlaceItem(String name, PlacePhoto[] photos, String placeId, float rating, String[] types, double totalRating, String vicinity) {
+    public PlaceItem(String name, PlacePhoto[] photos, String placeId, float rating, String[] types, int totalRating, String vicinity) {
         this.name = name;
         this.photos = photos;
         this.placeId = placeId;
@@ -36,7 +36,7 @@ public class PlaceItem implements Parcelable {
         placeId = in.readString();
         rating = in.readFloat();
         types = in.createStringArray();
-        totalRating = in.readDouble();
+        totalRating = in.readInt();
         vicinity = in.readString();
     }
     
@@ -72,7 +72,7 @@ public class PlaceItem implements Parcelable {
         return types;
     }
     
-    public double getTotalRating() {
+    public int getTotalRating() {
         return totalRating;
     }
     
@@ -92,7 +92,7 @@ public class PlaceItem implements Parcelable {
         dest.writeString(placeId);
         dest.writeFloat(rating);
         dest.writeStringArray(types);
-        dest.writeDouble(totalRating);
+        dest.writeInt(totalRating);
         dest.writeString(vicinity);
     }
 }

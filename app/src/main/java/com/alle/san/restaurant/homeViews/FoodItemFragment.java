@@ -82,20 +82,6 @@ public class FoodItemFragment extends Fragment {
                 .into(foodPic);
         placeName.setText(nFoodItem.getRestaurantName());
         foodName.setText(nFoodItem.getName());
-        Bitmap bitmap = Globals.getBitmapAt(new URL(nFoodItem.getImage()));
-        if (bitmap == null){
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.aa);
-        }
-        Palette.from(bitmap).generate(palette ->{
-            Palette.Swatch swatch = palette.getVibrantSwatch();
-            if (swatch != null){
-                GradientDrawable parentBackground = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP,
-                        new int[]{ 0x00000000, swatch.getRgb() });
-                parentLayout.setBackground(parentBackground);
-                foodName.setTextColor(swatch.getTitleTextColor());
-                placeName.setTextColor(swatch.getBodyTextColor());
-            }
-        });
     }
     
     private void initRecyclerViews() {

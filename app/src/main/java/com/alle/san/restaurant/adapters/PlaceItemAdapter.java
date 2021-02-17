@@ -1,29 +1,37 @@
 package com.alle.san.restaurant.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.alle.san.restaurant.MainActivity;
 import com.alle.san.restaurant.R;
 import com.alle.san.restaurant.models.place.PlaceItem;
 import com.alle.san.restaurant.models.place.PlacePhoto;
 import com.alle.san.restaurant.utilities.Globals;
+import com.alle.san.restaurant.utilities.ViewChanger;
 import com.bumptech.glide.Glide;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class PlaceItemAdapter extends RecyclerView.Adapter<PlaceItemAdapter.FeedViewHolder>{
     ArrayList<PlaceItem> placeItems;
     Context context;
+    ViewChanger nViewChanger;
     
     public PlaceItemAdapter(ArrayList<PlaceItem> placeItems, Context context) {
         this.placeItems = placeItems;
@@ -35,7 +43,7 @@ public class PlaceItemAdapter extends RecyclerView.Adapter<PlaceItemAdapter.Feed
     @Override
     public FeedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(context).inflate(R.layout.rv_place_item, parent, false);
-        return new FeedViewHolder(itemView, placeItems);
+        return new FeedViewHolder(itemView, placeItems, nViewChanger);
     }
     
     @Override
@@ -53,31 +61,64 @@ public class PlaceItemAdapter extends RecyclerView.Adapter<PlaceItemAdapter.Feed
         notifyDataSetChanged();
     }
     
+    @Override
+    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        nViewChanger = (ViewChanger) context;
+    }
+    
     public static class FeedViewHolder extends RecyclerView.ViewHolder{
         
-        TextView PlaceName, types, vicinity;
+        TextView placeName, types, vicinity;
         ImageView placePic;
         RatingBar nRatingBar;
+        LinearLayout parentLinearLayout;
+        ViewChanger nViewChanger;
         private final ArrayList<PlaceItem> placeItems;
         
-        public FeedViewHolder(@NonNull View itemView, ArrayList<PlaceItem> placeItems) {
+        public FeedViewHolder(@NonNull View itemView, ArrayList<PlaceItem> placeItems, ViewChanger viewChanger) {
             super(itemView);
-            PlaceName = itemView.findViewById(R.id.tvPlaceName);
+            parentLinearLayout = itemView.findViewById(R.id.parent_item_layout);
+            placeName = itemView.findViewById(R.id.tvPlaceName);
             vicinity = itemView.findViewById(R.id.tv_vicinity);
             types = itemView.findViewById(R.id.tv_type);
             placePic = itemView.findViewById(R.id.iv_placePic);
             nRatingBar = itemView.findViewById(R.id.rating_bar);
             this.placeItems = placeItems;
+            nViewChanger = viewChanger;
         }
         
         public void Bind (int position){
+            
             PlaceItem place = placeItems.get(position);
-            PlaceName.setText(place.getName());
+            itemView.setOnClickListener(view -> {
+                nViewChanger.onPlaceItemClick(place, placeItems, placePic, placeName);
+            });
+            placeName.setText(place.getName());
             types.setText("");
             for (String type:place.getTypes()) {
                 types.append(type);
                 types.append(", ");
             }
+            Bitmap bitmap = null;
+            try {
+                bitmap = Globals.getBitmapAt(new URL(Globals.getLink(place.getPhotos()[0])));
+            }catch(MalformedURLException e) {
+                e.printStackTrace();
+            }
+            if (bitmap != null){
+                Palette.from(bitmap).generate(palette ->{
+                    Palette.Swatch swatch = palette.getDominantSwatch();
+                    if (swatch != null){
+                        GradientDrawable parentBackground = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP,
+                                new int[]{ 0x00000000, swatch.getRgb() });
+                        parentLinearLayout.setBackground(parentBackground);
+                        placeName.setTextColor(swatch.getTitleTextColor());
+                        vicinity.setTextColor(swatch.getBodyTextColor());
+                    }
+                });
+            }
+            
             vicinity.setText(place.getVicinity());
             nRatingBar.setMax(5);
             nRatingBar.setRating(place.getRating());

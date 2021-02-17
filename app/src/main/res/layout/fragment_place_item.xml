@@ -13,7 +13,7 @@
 
 
         <ImageView
-            android:id="@+id/user_image"
+            android:id="@+id/place_image"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="center"
@@ -24,18 +24,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_similar_items"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            tools:listitem="@layout/rv_similar_place" />
+
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -46,7 +35,7 @@
             android:padding="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/user_image">
+            app:layout_constraintTop_toBottomOf="@+id/place_image">
 
             <TextView
                 android:id="@+id/tvPlaceName"
@@ -106,10 +95,13 @@
                 android:drawablePadding="4dp"
                 android:drawableTint="@color/colorAccent"
                 android:text="Phone Number"
+                app:drawableStartCompat="@drawable/phone_icon"
+                android:focusable="true"
+                android:clickable="true"
                 android:textColor="@color/highlight"
                 android:textSize="18sp"
                 app:drawableLeftCompat="@drawable/phone_icon"
-                app:drawableStartCompat="@drawable/phone_icon" />
+                 />
 
             <TextView
                 android:id="@+id/tv_open_map"
@@ -119,6 +111,8 @@
                 android:drawableTint="@color/colorAccent"
                 android:textColor="@color/highlight"
                 android:text="See on Map"
+                android:focusable="true"
+                android:clickable="true"
                 android:textSize="18sp"
                 app:drawableLeftCompat="@drawable/map_icon"
                 app:drawableStartCompat="@drawable/map_icon" />
@@ -132,6 +126,8 @@
                 android:drawableTint="@color/colorAccent"
                 android:textColor="@color/highlight"
                 android:text="Show More"
+                android:focusable="true"
+                android:clickable="true"
                 android:textSize="18sp"
                 app:drawableLeftCompat="@drawable/ic_search_black_24dp"
                 app:drawableStartCompat="@drawable/ic_search_black_24dp" />
@@ -144,6 +140,8 @@
                 android:drawableTint="@color/colorAccent"
                 android:textColor="@color/highlight"
                 android:text="Website"
+                android:focusable="true"
+                android:clickable="true"
                 android:textSize="18sp"
                 app:drawableLeftCompat="@drawable/link_icon"
                 app:drawableStartCompat="@drawable/link_icon" />
@@ -154,7 +152,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/bottom_line"
                 android:text="@string/prices"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -258,7 +255,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
-                android:background="@drawable/bottom_line"
                 android:text="@string/reviews"
                 android:textStyle="bold" />
 
@@ -280,13 +276,26 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:background="@drawable/bottom_line"
             android:text="@string/similar_places"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_similar_items"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:listitem="@layout/rv_similar_place"
+            android:layout_marginBottom="40dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

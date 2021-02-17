@@ -18,7 +18,7 @@ import com.alle.san.restaurant.adapters.PlaceItemAdapter;
 import com.alle.san.restaurant.models.place.PlaceItem;
 import com.alle.san.restaurant.models.place.PlaceSearchResult;
 import com.alle.san.restaurant.repo.RetroFetch;
-import com.alle.san.restaurant.utilities.Globals;
+import com.alle.san.restaurant.utilities.ApiParams;
 
 import java.util.ArrayList;
 
@@ -49,19 +49,19 @@ public class PlaceFragment extends Fragment {
         progressBar = view.findViewById(R.id.progressBar);
         
         nRetrofit = new Retrofit.Builder()
-                .baseUrl(Globals.PLACES_BASE_URL)
+                .baseUrl(ApiParams.PLACES_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         nRetroFetch = nRetrofit.create(RetroFetch.class);
         
-        fetchData(Globals.TYPE);
+        fetchData(ApiParams.TYPE);
         loadMore();
         return view;
     }
     
     private void fetchData(String type) {
     
-        Call<PlaceSearchResult> call = nRetroFetch.getPlaces(Globals.PLACE_API_KEY, Globals.LOCATION, Globals.RADIUS, type);
+        Call<PlaceSearchResult> call = nRetroFetch.getPlaces(ApiParams.PLACE_API_KEY, ApiParams.LOCATION, ApiParams.RADIUS, type);
         progressBar.setVisibility(View.VISIBLE);
         call.enqueue(new Callback<PlaceSearchResult>() {
             @Override
@@ -99,7 +99,7 @@ public class PlaceFragment extends Fragment {
                 int scrolledItemCount = nManager.findFirstVisibleItemPosition();
                 if (nPlaceSearchResult.getPageToken() != null){
                     if ((visibleItemCount + scrolledItemCount)>= totalItemCount) {
-                        Call<PlaceSearchResult> call = nRetroFetch.getMorePlaces(nPlaceSearchResult.getPageToken(), Globals.PLACE_API_KEY);
+                        Call<PlaceSearchResult> call = nRetroFetch.getMorePlaces(nPlaceSearchResult.getPageToken(), ApiParams.PLACE_API_KEY);
                         call.enqueue(new Callback<PlaceSearchResult>() {
                             @Override
                             public void onResponse(Call<PlaceSearchResult> call, Response<PlaceSearchResult> response) {

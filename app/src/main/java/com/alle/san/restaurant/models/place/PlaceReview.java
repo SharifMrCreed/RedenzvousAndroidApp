@@ -13,4 +13,31 @@ public class PlaceReview {
     @SerializedName("text")
     String review;
     int time;
+    
+    public PlaceReview() {
+    }
+    
+    public String getAuthorName() {
+        return authorName;
+    }
+    
+    public String getProfileUrl() {
+        return profileUrl;
+    }
+    
+    public float getRating() {
+        return rating;
+    }
+    
+    public String getRelativeTime() {
+        return relativeTime;
+    }
+    
+    public String getReview() {
+        return review;
+    }
+    
+    public int getTime() {
+        return time;
+    }
 }
