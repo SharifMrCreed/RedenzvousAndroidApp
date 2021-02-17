@@ -85,24 +85,6 @@ public class SimilarRvAdapter extends RecyclerView.Adapter<SimilarRvAdapter.Feed
                     .fallback(R.drawable.image_icon)
                     .error(R.drawable.broken_image_icon)
                     .into(foodPic);
-            Bitmap bitmap = null;
-            try {
-                bitmap = Globals.getBitmapAt(new URL(foodItem.getImage()));
-            }catch(MalformedURLException e) {
-                e.printStackTrace();
-            }
-            if (bitmap != null){
-                Palette.from(bitmap).generate(palette ->{
-                    Palette.Swatch swatch = palette.getDominantSwatch();
-                    if (swatch != null){
-                        GradientDrawable parentBackground = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP,
-                                new int[]{ 0x00000000, swatch.getRgb() });
-                        parentLinearLayout.setBackground(parentBackground);
-                        foodName.setTextColor(swatch.getTitleTextColor());
-                        placeName.setTextColor(swatch.getBodyTextColor());
-                    }
-                });
-            }
             itemView.setOnClickListener(v -> viewChanger.onFoodItemClick(foodItem, foodItems, foodPic, foodName, placeName));
         }
 

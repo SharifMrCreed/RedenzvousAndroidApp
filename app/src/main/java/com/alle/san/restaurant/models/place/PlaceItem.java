@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Arrays;
+
 public class PlaceItem implements Parcelable {
     
     String name;
@@ -30,6 +32,18 @@ public class PlaceItem implements Parcelable {
         this.vicinity = vicinity;
     }
     
+    @Override
+    public String toString() {
+        return "\nPlaceItem{" +
+                "name='" + name + '\'' +
+                ", placeId='" + placeId + '\'' +
+                ", rating=" + rating +
+                ", photos=" + Arrays.toString(photos) +
+                ", types=" + Arrays.toString(types) +
+                ", totalRating=" + totalRating +
+                ", vicinity='" + vicinity + '\'' +
+                '}';
+    }
     
     protected PlaceItem(Parcel in) {
         name = in.readString();

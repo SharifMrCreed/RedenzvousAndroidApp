@@ -42,7 +42,7 @@ public class PlaceItemAdapter extends RecyclerView.Adapter<PlaceItemAdapter.Feed
     @NonNull
     @Override
     public FeedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(context).inflate(R.layout.rv_place_item, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_place_item, parent, false);
         return new FeedViewHolder(itemView, placeItems, nViewChanger);
     }
     
@@ -100,24 +100,6 @@ public class PlaceItemAdapter extends RecyclerView.Adapter<PlaceItemAdapter.Feed
                 types.append(type);
                 types.append(", ");
             }
-            Bitmap bitmap = null;
-            try {
-                bitmap = Globals.getBitmapAt(new URL(Globals.getLink(place.getPhotos()[0])));
-            }catch(MalformedURLException e) {
-                e.printStackTrace();
-            }
-            if (bitmap != null){
-                Palette.from(bitmap).generate(palette ->{
-                    Palette.Swatch swatch = palette.getDominantSwatch();
-                    if (swatch != null){
-                        GradientDrawable parentBackground = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP,
-                                new int[]{ 0x00000000, swatch.getRgb() });
-                        parentLinearLayout.setBackground(parentBackground);
-                        placeName.setTextColor(swatch.getTitleTextColor());
-                        vicinity.setTextColor(swatch.getBodyTextColor());
-                    }
-                });
-            }
             
             vicinity.setText(place.getVicinity());
             nRatingBar.setMax(5);
@@ -130,7 +112,7 @@ public class PlaceItemAdapter extends RecyclerView.Adapter<PlaceItemAdapter.Feed
                         .fallback(R.drawable.broken_image_icon)
                         .into(placePic);
             }else{
-                Glide.with(itemView).load(R.drawable.aa)
+                Glide.with(itemView.getContext()).load(R.drawable.aa)
                         .placeholder(R.drawable.image_icon)
                         .fallback(R.drawable.broken_image_icon)
                         .into(placePic);

@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -46,26 +47,26 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class PlaceItemFragment extends Fragment implements ItemCarrier {
+public class PlaceItemFragment extends Fragment {
     ConstraintLayout parentLayout;
     RecyclerView similarItems, reviews_RV;
     ImageView placePic;
     TextView vicinity, tvRating, tvRaters, tvPhoneNumber, tvOpenMap, tvGoogleSite,
-            tvWebsite, placeName, tvFree, tvFair, tvModerate, tvPricey, tvHighEnd;
+            tvWebsite, placeName, tvFree, tvReview, tvFair, tvModerate, tvPricey, tvHighEnd;
     PlaceItem nPlaceItem = new PlaceItem();
     RatingBar ratingBar;
     PlaceDetails placeDetails = new PlaceDetails();
     ArrayList<PlaceItem> morePlaces = new ArrayList<>();
-  
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bundle = getArguments();
-        if (bundle != null){
+        if(bundle != null) {
             nPlaceItem = bundle.getParcelable(Globals.PLACE_ITEM);
             morePlaces = bundle.getParcelableArrayList(Globals.PLACE_ITEMS);
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             setSharedElementEnterTransition(TransitionInflater.from(getContext()).inflateTransition(R.transition.enter_transition));
             setSharedElementReturnTransition(TransitionInflater.from(getContext()).inflateTransition(R.transition.enter_transition));
         }
@@ -79,16 +80,14 @@ public class PlaceItemFragment extends Fragment implements ItemCarrier {
         initViews(view);
         
         initRecyclerViews();
-        try {
-            populateViews();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-    
+        
+        populateViews();
+        
+        
         return view;
     }
     
-    private void getPlaceDetails(String placeId){
+    private void getPlaceDetails(String placeId) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiParams.PLACES_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -98,27 +97,51 @@ public class PlaceItemFragment extends Fragment implements ItemCarrier {
         call.enqueue(new Callback<PlaceDetailResult>() {
             @Override
             public void onResponse(Call<PlaceDetailResult> call, Response<PlaceDetailResult> response) {
-                if(response.isSuccessful()){
+                if(response.isSuccessful()) {
                     PlaceDetailResult result = response.body();
-                    ItemCarrier carrier = PlaceItemFragment.this;
-                    carrier.carryPlaceDetails(result.getResult());
-                }
-                else {
+                    if(result.getResult().getPlaceReview() != null){
+                        initReviewsRecyclerView(result.getResult());
+                    }else{
+                        tvReview.setText("No Reviews");
+                    }
+                    putDetails(result.getResult());
+                }else {
                     Toast.makeText(getContext(), "something went wrong", Toast.LENGTH_LONG).show();
                 }
             }
-    
+            
             @Override
             public void onFailure(Call<PlaceDetailResult> call, Throwable t) {
-    
+                
                 Toast.makeText(getContext(), "failed to connect", Toast.LENGTH_LONG).show();
             }
         });
     }
     
+    private void putDetails(PlaceDetails result) {
+        switch(result.getPriceLevel()) {
+            case (1):
+                tvFair.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button_shape_filled, null));
+                break;
+            case (2):
+                tvModerate.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button_shape_filled, null));
+                break;
+            case (3):
+                tvPricey.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button_shape_filled, null));
+                break;
+            case (4):
+                tvHighEnd.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button_shape_filled, null));
+                break;
+            default:
+                tvFree.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button_shape_filled, null));
+        }
+            tvPhoneNumber.setText(result.getFormattedPhoneNumber());
+            tvWebsite.setText(result.getBusinessWebsite());
+        
+    }
     
     
-    private void populateViews() throws MalformedURLException {
+    private void populateViews() {
         getPlaceDetails(nPlaceItem.getPlaceId());
         Glide.with(getContext()).load(Globals.getLink(nPlaceItem.getPhotos()[0]))
                 .placeholder(R.drawable.image_icon)
@@ -126,48 +149,22 @@ public class PlaceItemFragment extends Fragment implements ItemCarrier {
                 .into(placePic);
         vicinity.setText(nPlaceItem.getVicinity());
         placeName.setText(nPlaceItem.getName());
-    
+        
         ratingBar.setMax(5);
         ratingBar.setRating(nPlaceItem.getRating());
         tvRating.setText(String.valueOf(nPlaceItem.getRating()));
         String raters = "(" + nPlaceItem.getTotalRating() + ")";
         tvRaters.setText(raters);
         
-        if(placeDetails != null){
-            switch(placeDetails.getPriceLevel()){
-                case(1):
-                    tvFair.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                    break;
-                case(2):
-                    tvModerate.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                    break;
-                case(3):
-                    tvPricey.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                    break;
-                case(4):
-                    tvHighEnd.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                    break;
-                default:
-                    tvFree.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-            }
-            if((placeDetails.getFormattedPhoneNumber() != null)) {
-                tvPhoneNumber.setText(placeDetails.getFormattedPhoneNumber());
-            }else {
-                tvPhoneNumber.setText("No Phone Number");
-            }
-            if(placeDetails.getBusinessWebsite() != null)
-                tvWebsite.setText(placeDetails.getBusinessWebsite());
-            else
-                tvWebsite.setText("No website");
-            initReviewsRecyclerView(placeDetails);
-        }
+        if(placeDetails != null) {
         
+        }
         
         
     }
     
     private void initReviewsRecyclerView(PlaceDetails placeDetails) {
-        ArrayList<PlaceReview> reviews = new ArrayList<>(Arrays.asList(placeDetails.getPlaceReview()));
+        ArrayList<PlaceReview> reviews = new ArrayList<>(placeDetails.getPlaceReview());
         reviews_RV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         reviews_RV.setAdapter(new ReViewsRvAdapter(reviews));
     }
@@ -182,6 +179,7 @@ public class PlaceItemFragment extends Fragment implements ItemCarrier {
         placeName = view.findViewById(R.id.tvPlaceName);
         tvRating = view.findViewById(R.id.tv_rating);
         tvRaters = view.findViewById(R.id.tv_raters);
+        tvReview = view.findViewById(R.id.tv_review);
         ratingBar = view.findViewById(R.id.rating_bar);
         tvPhoneNumber = view.findViewById(R.id.tv_phone_number);
         tvOpenMap = view.findViewById(R.id.tv_open_map);
@@ -198,8 +196,4 @@ public class PlaceItemFragment extends Fragment implements ItemCarrier {
         parentLayout = view.findViewById(R.id.place_item_parent);
     }
     
-    @Override
-    public void carryPlaceDetails(PlaceDetails details) {
-        placeDetails = details;
-    }
 }

@@ -235,7 +235,7 @@ public class MainActivity extends AppCompatActivity implements ViewChanger {
             if ((tag.equals(allTags.get((allTags.size() - 1))))) {
                 allTags.remove(allTags.size() - 1);
             }
-            if (allTags.size() < 1){
+            if (allTags.size() > 1){
                 if ((tag.equals(allTags.get((allTags.size() - 2))))) {
                     allTags.remove(allTags.size() - 2);
                 }

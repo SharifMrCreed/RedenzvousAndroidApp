@@ -1,6 +1,7 @@
 package com.alle.san.restaurant.homeViews;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,12 +35,11 @@ public class PlaceFragment extends Fragment {
     ProgressBar progressBar;
     private Retrofit nRetrofit;
     private RetroFetch nRetroFetch;
-    private PlaceSearchResult nPlaceSearchResult;
-    private PlaceSearchResult nPlaceSearchResult2;
     private PlaceItemAdapter nAdapter;
+    int i=0;
     private LinearLayoutManager nManager;
+    public static final String TAG = "Place fragment";
     
-    ArrayList<PlaceItem> nPlaceItemList = new ArrayList<>();
     
     @Nullable
     @Override
@@ -55,7 +55,6 @@ public class PlaceFragment extends Fragment {
         nRetroFetch = nRetrofit.create(RetroFetch.class);
         
         fetchData(ApiParams.TYPE);
-        loadMore();
         return view;
     }
     
@@ -66,15 +65,19 @@ public class PlaceFragment extends Fragment {
         call.enqueue(new Callback<PlaceSearchResult>() {
             @Override
             public void onResponse(Call<PlaceSearchResult> call, Response<PlaceSearchResult> response) {
-                progressBar.setVisibility(View.INVISIBLE);
+                progressBar.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
-                    nPlaceSearchResult = response.body();
-                    ArrayList<PlaceItem> anotherList = filteredList((ArrayList<PlaceItem>) nPlaceSearchResult.getPlaceResults());
-                    nPlaceItemList.addAll(anotherList);
+                    PlaceSearchResult result = response.body();
+                    if(result.getPlaceResults() != null){
+                        ArrayList<PlaceItem> anotherList = filteredList((ArrayList<PlaceItem>) result.getPlaceResults());
+    
+                        nAdapter = new PlaceItemAdapter(anotherList, getContext());
+                        nManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+                        initPlacesRv();
+                    }else {
+                        Toast.makeText(getContext(), "Scroll Again", Toast.LENGTH_LONG).show();
+                    }
                     
-                    nAdapter = new PlaceItemAdapter(nPlaceItemList, getContext());
-                    nManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
-                    initPlacesRv();
                 } else {
                 
                     Toast.makeText(getContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
@@ -84,7 +87,7 @@ public class PlaceFragment extends Fragment {
         
             @Override
             public void onFailure(Call<PlaceSearchResult> call, Throwable t) {
-                progressBar.setVisibility(View.INVISIBLE);
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(getContext(), "Failed to connect", Toast.LENGTH_LONG).show();
             }
         });
@@ -97,32 +100,14 @@ public class PlaceFragment extends Fragment {
                 int visibleItemCount = nManager.getChildCount();
                 int totalItemCount = nManager.getItemCount();
                 int scrolledItemCount = nManager.findFirstVisibleItemPosition();
-                if (nPlaceSearchResult.getPageToken() != null){
                     if ((visibleItemCount + scrolledItemCount)>= totalItemCount) {
-                        Call<PlaceSearchResult> call = nRetroFetch.getMorePlaces(nPlaceSearchResult.getPageToken(), ApiParams.PLACE_API_KEY);
-                        call.enqueue(new Callback<PlaceSearchResult>() {
-                            @Override
-                            public void onResponse(Call<PlaceSearchResult> call, Response<PlaceSearchResult> response) {
-                                if (response.isSuccessful()) {
-                                    nPlaceSearchResult2 = response.body();
-                                    ArrayList<PlaceItem> placeItems = filteredList((ArrayList<PlaceItem>) nPlaceSearchResult2.getPlaceResults());
-                                    nAdapter.updateItems(placeItems);
-                                    
-                                    
-                                } else {
-                                    Toast.makeText(getContext(), "Something Went Wrong", Toast.LENGTH_LONG).show();
-                                }
-                            }
-                            
-                            @Override
-                            public void onFailure(Call<PlaceSearchResult> call, Throwable t) {
-                                Toast.makeText(getContext(), "Could Not Connect", Toast.LENGTH_LONG).show();
-                            }
-                        });
+                        if(i<= ApiParams.types.length){
+                            fetchData(ApiParams.types[i]);
+                        }
+                        
                     }
-                }else{
-                    fetchData("lodging");
-                }
+                
+                
             }
         });
     }

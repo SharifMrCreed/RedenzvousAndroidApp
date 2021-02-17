@@ -2,6 +2,8 @@ package com.alle.san.restaurant.models.place;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 public class PlaceDetails {
     @SerializedName("formatted_address")
     String formattedAddress;
@@ -25,7 +27,7 @@ public class PlaceDetails {
     String businessWebsite;
     String vicinity;
     @SerializedName("reviews")
-    PlaceReview[] placeReview;
+    ArrayList<PlaceReview> placeReview;
     String[] types;
     
     public PlaceDetails() {
@@ -75,7 +77,7 @@ public class PlaceDetails {
         return vicinity;
     }
     
-    public PlaceReview[] getPlaceReview() {
+    public ArrayList<PlaceReview> getPlaceReview() {
         return placeReview;
     }
     

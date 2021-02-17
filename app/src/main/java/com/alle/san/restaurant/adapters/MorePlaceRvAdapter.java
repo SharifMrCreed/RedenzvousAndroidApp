@@ -81,29 +81,12 @@ public class MorePlaceRvAdapter extends RecyclerView.Adapter<MorePlaceRvAdapter.
             PlaceItem place = places.get(position);
             placeName.setText(place.getName());
             location.setText(place.getVicinity());
-            Glide.with(itemView).load(place.getPhotos()[0])
+            Glide.with(itemView).load(Globals.getLink(place.getPhotos()[0]))
                     .placeholder(R.drawable.image_icon)
                     .fallback(R.drawable.image_icon)
                     .error(R.drawable.broken_image_icon)
                     .into(placePic);
-            Bitmap bitmap = null;
-            try {
-                bitmap = Globals.getBitmapAt(new URL(Globals.getLink(place.getPhotos()[0])));
-            }catch(MalformedURLException e) {
-                e.printStackTrace();
-            }
-            if (bitmap != null){
-                Palette.from(bitmap).generate(palette ->{
-                    Palette.Swatch swatch = palette.getDominantSwatch();
-                    if (swatch != null){
-                        GradientDrawable parentBackground = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP,
-                                new int[]{ 0x00000000, swatch.getRgb() });
-                        parentLinearLayout.setBackground(parentBackground);
-                        placeName.setTextColor(swatch.getTitleTextColor());
-                        location.setTextColor(swatch.getBodyTextColor());
-                    }
-                });
-            }
+            
             itemView.setOnClickListener(v -> viewChanger.onPlaceItemClick(place, places, placePic, placeName));
             
         }

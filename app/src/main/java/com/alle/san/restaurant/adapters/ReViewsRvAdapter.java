@@ -45,7 +45,7 @@ public class ReViewsRvAdapter extends RecyclerView.Adapter<ReViewsRvAdapter.Revi
     
     public static class ReviewViewHolder extends RecyclerView.ViewHolder{
         ImageView authorPic;
-        TextView tvDate, tvRating, tvRelativeDate, tvComment, tvAuthorName;
+        TextView tvRating, tvRelativeDate, tvComment, tvAuthorName;
         RatingBar ratingBar;
         ArrayList<PlaceReview> reviews;
         
@@ -53,7 +53,6 @@ public class ReViewsRvAdapter extends RecyclerView.Adapter<ReViewsRvAdapter.Revi
             super(itemView);
             authorPic = itemView.findViewById(R.id.authorImage);
             tvAuthorName = itemView.findViewById(R.id.tv_author_name);
-            tvDate = itemView.findViewById(R.id.tv_date);
             tvRating = itemView.findViewById(R.id.tv_rating);
             tvRelativeDate = itemView.findViewById(R.id.tv_relative_time);
             tvComment = itemView.findViewById(R.id.tv_review);
@@ -72,9 +71,11 @@ public class ReViewsRvAdapter extends RecyclerView.Adapter<ReViewsRvAdapter.Revi
             
             tvAuthorName.setText(placeReview.getAuthorName());
             tvRelativeDate.setText(placeReview.getRelativeTime());
+            ratingBar.setMax(5);
+            ratingBar.setRating(placeReview.getRating());
+            
             tvRating.setText(String.valueOf(placeReview.getRating()));
             tvComment.setText(placeReview.getReview());
-            tvDate.setText(String.valueOf(new Date(placeReview.getTime())));
         }
     
         

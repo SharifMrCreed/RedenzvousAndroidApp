@@ -54,11 +54,11 @@ public class HomePagerAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position){
             case 0:
-                return "Foodies";
+                return "Menus";
             case 1:
                 return "Places";
             case 2:
-                return "Party";
+                return "Parties";
             default:
                 return null;
 
