@@ -31,6 +31,7 @@ import com.alle.san.restaurant.models.place.PlaceReview;
 import com.alle.san.restaurant.repo.RetroFetch;
 import com.alle.san.restaurant.utilities.ApiParams;
 import com.alle.san.restaurant.utilities.Globals;
+import com.alle.san.restaurant.utilities.ItemCarrier;
 import com.bumptech.glide.Glide;
 
 import java.net.MalformedURLException;
@@ -45,7 +46,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class PlaceItemFragment extends Fragment {
+public class PlaceItemFragment extends Fragment implements ItemCarrier {
     ConstraintLayout parentLayout;
     RecyclerView similarItems, reviews_RV;
     ImageView placePic;
@@ -53,6 +54,7 @@ public class PlaceItemFragment extends Fragment {
             tvWebsite, placeName, tvFree, tvFair, tvModerate, tvPricey, tvHighEnd;
     PlaceItem nPlaceItem = new PlaceItem();
     RatingBar ratingBar;
+    PlaceDetails placeDetails = new PlaceDetails();
     ArrayList<PlaceItem> morePlaces = new ArrayList<>();
   
     @Override
@@ -86,8 +88,7 @@ public class PlaceItemFragment extends Fragment {
         return view;
     }
     
-    private PlaceDetails getPlaceDetails(String placeId){
-        final PlaceDetails[] placeDetails = new PlaceDetails[1];
+    private void getPlaceDetails(String placeId){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiParams.PLACES_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -97,9 +98,10 @@ public class PlaceItemFragment extends Fragment {
         call.enqueue(new Callback<PlaceDetailResult>() {
             @Override
             public void onResponse(Call<PlaceDetailResult> call, Response<PlaceDetailResult> response) {
-                if(response.isSuccessful() && !(response == null)){
+                if(response.isSuccessful()){
                     PlaceDetailResult result = response.body();
-                    placeDetails[0] = result.getResult();
+                    ItemCarrier carrier = PlaceItemFragment.this;
+                    carrier.carryPlaceDetails(result.getResult());
                 }
                 else {
                     Toast.makeText(getContext(), "something went wrong", Toast.LENGTH_LONG).show();
@@ -112,15 +114,12 @@ public class PlaceItemFragment extends Fragment {
                 Toast.makeText(getContext(), "failed to connect", Toast.LENGTH_LONG).show();
             }
         });
-        
-        PlaceDetails details =placeDetails[0];
-        return details;
     }
     
     
     
     private void populateViews() throws MalformedURLException {
-        PlaceDetails placeDetails = getPlaceDetails(nPlaceItem.getPlaceId());
+        getPlaceDetails(nPlaceItem.getPlaceId());
         Glide.with(getContext()).load(Globals.getLink(nPlaceItem.getPhotos()[0]))
                 .placeholder(R.drawable.image_icon)
                 .fallback(R.drawable.broken_image_icon)
@@ -197,5 +196,10 @@ public class PlaceItemFragment extends Fragment {
         vicinity = view.findViewById(R.id.tv_vicinity);
         similarItems = view.findViewById(R.id.rv_similar_items);
         parentLayout = view.findViewById(R.id.place_item_parent);
+    }
+    
+    @Override
+    public void carryPlaceDetails(PlaceDetails details) {
+        placeDetails = details;
     }
 }
