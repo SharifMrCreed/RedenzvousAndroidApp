@@ -1,15 +1,11 @@
 package com.alle.san.restaurant.homeViews;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
-import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,13 +28,9 @@ import com.alle.san.restaurant.models.place.PlaceReview;
 import com.alle.san.restaurant.repo.RetroFetch;
 import com.alle.san.restaurant.utilities.ApiParams;
 import com.alle.san.restaurant.utilities.Globals;
-import com.alle.san.restaurant.utilities.ItemCarrier;
 import com.bumptech.glide.Glide;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,8 +43,8 @@ public class PlaceItemFragment extends Fragment {
     ConstraintLayout parentLayout;
     RecyclerView similarItems, reviews_RV;
     ImageView placePic;
-    TextView vicinity, tvRating, tvRaters, tvPhoneNumber, tvOpenMap, tvGoogleSite,
-            tvWebsite, placeName, tvFree, tvReview, tvFair, tvModerate, tvPricey, tvHighEnd;
+    TextView vicinity, tvRating, tvRaters, tvPhoneNumber, tvOpenMap, tvWebsite,
+            placeName, tvFree, tvReview, tvFair, tvModerate, tvPricey, tvHighEnd;
     PlaceItem nPlaceItem = new PlaceItem();
     RatingBar ratingBar;
     PlaceDetails placeDetails = new PlaceDetails();
@@ -93,7 +85,7 @@ public class PlaceItemFragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RetroFetch retroFetch = retrofit.create(RetroFetch.class);
-        Call<PlaceDetailResult> call = retroFetch.getPlaceDetails(ApiParams.PLACE_API_KEY, placeId);
+        Call<PlaceDetailResult> call = retroFetch.getPlaceDetails(ApiParams.PLACE_API_KEY, placeId, ApiParams.FIELDS);
         call.enqueue(new Callback<PlaceDetailResult>() {
             @Override
             public void onResponse(Call<PlaceDetailResult> call, Response<PlaceDetailResult> response) {
@@ -135,7 +127,7 @@ public class PlaceItemFragment extends Fragment {
             default:
                 tvFree.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button_shape_filled, null));
         }
-            tvPhoneNumber.setText(result.getFormattedPhoneNumber());
+            tvPhoneNumber.setText(result.getIntPhoneNumber());
             tvWebsite.setText(result.getBusinessWebsite());
         
     }
@@ -143,7 +135,7 @@ public class PlaceItemFragment extends Fragment {
     
     private void populateViews() {
         getPlaceDetails(nPlaceItem.getPlaceId());
-        Glide.with(getContext()).load(Globals.getLink(nPlaceItem.getPhotos()[0]))
+        Glide.with(getContext()).load(Globals.getLink(nPlaceItem.getPhotos().get(0)))
                 .placeholder(R.drawable.image_icon)
                 .fallback(R.drawable.broken_image_icon)
                 .into(placePic);
@@ -183,7 +175,6 @@ public class PlaceItemFragment extends Fragment {
         ratingBar = view.findViewById(R.id.rating_bar);
         tvPhoneNumber = view.findViewById(R.id.tv_phone_number);
         tvOpenMap = view.findViewById(R.id.tv_open_map);
-        tvGoogleSite = view.findViewById(R.id.tv_google_website);
         tvWebsite = view.findViewById(R.id.tv_website);
         tvFree = view.findViewById(R.id.tv_free);
         tvFair = view.findViewById(R.id.tv_fair);

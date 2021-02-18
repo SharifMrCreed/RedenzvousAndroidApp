@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class PlaceItem implements Parcelable {
@@ -13,8 +14,8 @@ public class PlaceItem implements Parcelable {
     @SerializedName("place_id")
     String placeId;
     float rating;
-    PlacePhoto[] photos;
-    String[] types;
+    ArrayList<PlacePhoto> photos;
+    PlaceLocation location;
     @SerializedName("user_ratings_total")
     int totalRating;
     String vicinity;
@@ -22,34 +23,13 @@ public class PlaceItem implements Parcelable {
     public PlaceItem() {
     }
     
-    public PlaceItem(String name, PlacePhoto[] photos, String placeId, float rating, String[] types, int totalRating, String vicinity) {
-        this.name = name;
-        this.photos = photos;
-        this.placeId = placeId;
-        this.rating = rating;
-        this.types = types;
-        this.totalRating = totalRating;
-        this.vicinity = vicinity;
-    }
-    
-    @Override
-    public String toString() {
-        return "\nPlaceItem{" +
-                "name='" + name + '\'' +
-                ", placeId='" + placeId + '\'' +
-                ", rating=" + rating +
-                ", photos=" + Arrays.toString(photos) +
-                ", types=" + Arrays.toString(types) +
-                ", totalRating=" + totalRating +
-                ", vicinity='" + vicinity + '\'' +
-                '}';
-    }
     
     protected PlaceItem(Parcel in) {
         name = in.readString();
         placeId = in.readString();
         rating = in.readFloat();
-        types = in.createStringArray();
+        photos = in.createTypedArrayList(PlacePhoto.CREATOR);
+        location = in.readParcelable(PlaceLocation.class.getClassLoader());
         totalRating = in.readInt();
         vicinity = in.readString();
     }
@@ -66,7 +46,20 @@ public class PlaceItem implements Parcelable {
         }
     };
     
-    public PlacePhoto[] getPhotos() {
+    @Override
+    public String toString() {
+        return "PlaceItem{" +
+                "name='" + name + '\'' +
+                ", placeId='" + placeId + '\'' +
+                ", rating=" + rating +
+                ", photos=" + photos +
+                ", location=" + location +
+                ", totalRating=" + totalRating +
+                ", vicinity='" + vicinity + '\'' +
+                '}';
+    }
+    
+    public ArrayList<PlacePhoto> getPhotos() {
         return photos;
     }
     
@@ -82,10 +75,6 @@ public class PlaceItem implements Parcelable {
         return rating;
     }
     
-    public String[] getTypes() {
-        return types;
-    }
-    
     public int getTotalRating() {
         return totalRating;
     }
@@ -93,6 +82,7 @@ public class PlaceItem implements Parcelable {
     public String getVicinity() {
         return vicinity;
     }
+    
     
     @Override
     public int describeContents() {
@@ -105,7 +95,8 @@ public class PlaceItem implements Parcelable {
         dest.writeString(name);
         dest.writeString(placeId);
         dest.writeFloat(rating);
-        dest.writeStringArray(types);
+        dest.writeTypedList(photos);
+        dest.writeParcelable(location, flags);
         dest.writeInt(totalRating);
         dest.writeString(vicinity);
     }

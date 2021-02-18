@@ -72,8 +72,7 @@
                     android:id="@+id/tv_raters"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="(32)"
-                    android:textSize="18sp" />
+                    android:text="(32)" />
             </LinearLayout>
 
 
@@ -116,21 +115,6 @@
                 android:textSize="18sp"
                 app:drawableLeftCompat="@drawable/map_icon"
                 app:drawableStartCompat="@drawable/map_icon" />
-
-
-            <TextView
-                android:id="@+id/tv_google_website"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="4dp"
-                android:drawableTint="@color/colorPrimaryDark"
-                android:textColor="@color/highlight"
-                android:text="Show More"
-                android:focusable="true"
-                android:clickable="true"
-                android:textSize="18sp"
-                app:drawableLeftCompat="@drawable/ic_search_black_24dp"
-                app:drawableStartCompat="@drawable/ic_search_black_24dp" />
 
             <TextView
                 android:id="@+id/tv_website"

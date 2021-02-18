@@ -36,8 +36,10 @@ public interface RetroFetch {
     @GET("details/json")
     Call<PlaceDetailResult> getPlaceDetails(
             @Query("key") String key,
-            @Query("place_id") String placeId
+            @Query("place_id") String placeId,
+            @Query("fields")String fields
     );
+    
     @GET("nearbysearch/json")
     Call<PlaceSearchResult> getMorePlaces(
             @Query("pagetoken") String pageToken,

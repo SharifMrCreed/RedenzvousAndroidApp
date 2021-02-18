@@ -1,8 +1,6 @@
 package com.alle.san.restaurant.adapters;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +9,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alle.san.restaurant.R;
@@ -20,8 +17,6 @@ import com.alle.san.restaurant.utilities.Globals;
 import com.alle.san.restaurant.utilities.ViewChanger;
 import com.bumptech.glide.Glide;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class MorePlaceRvAdapter extends RecyclerView.Adapter<MorePlaceRvAdapter.FeedViewHolder> {
@@ -81,7 +76,7 @@ public class MorePlaceRvAdapter extends RecyclerView.Adapter<MorePlaceRvAdapter.
             PlaceItem place = places.get(position);
             placeName.setText(place.getName());
             location.setText(place.getVicinity());
-            Glide.with(itemView).load(Globals.getLink(place.getPhotos()[0]))
+            Glide.with(itemView).load(Globals.getLink(place.getPhotos().get(0)))
                     .placeholder(R.drawable.image_icon)
                     .fallback(R.drawable.image_icon)
                     .error(R.drawable.broken_image_icon)

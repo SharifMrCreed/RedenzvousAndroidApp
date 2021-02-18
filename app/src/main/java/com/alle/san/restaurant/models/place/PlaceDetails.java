@@ -1,49 +1,43 @@
 package com.alle.san.restaurant.models.place;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class PlaceDetails {
-    @SerializedName("formatted_address")
-    String formattedAddress;
-    @SerializedName("formatted_phone_number")
-    String formattedPhoneNumber;
-    @SerializedName("location")
-    PlaceLocation placeLocation;
+public class PlaceDetails implements Parcelable {
     @SerializedName("international_phone_number")
     String intPhoneNumber;
     @SerializedName("price_level")
     int priceLevel;
-    @SerializedName("name")
-    String placeName;
-    @SerializedName("place_id")
-    String placeId;
-    @SerializedName("rating")
-    float placeRating;
-    @SerializedName("url")
-    String googleWebsite;
     @SerializedName("website")
     String businessWebsite;
-    String vicinity;
     @SerializedName("reviews")
     ArrayList<PlaceReview> placeReview;
-    String[] types;
     
     public PlaceDetails() {
     }
     
-    public String getFormattedAddress() {
-        return formattedAddress;
+    protected PlaceDetails(Parcel in) {
+        intPhoneNumber = in.readString();
+        priceLevel = in.readInt();
+        businessWebsite = in.readString();
+        placeReview = in.createTypedArrayList(PlaceReview.CREATOR);
     }
     
-    public String getFormattedPhoneNumber() {
-        return formattedPhoneNumber;
-    }
-    
-    public PlaceLocation getPlaceLocation() {
-        return placeLocation;
-    }
+    public static final Creator<PlaceDetails> CREATOR = new Creator<PlaceDetails>() {
+        @Override
+        public PlaceDetails createFromParcel(Parcel in) {
+            return new PlaceDetails(in);
+        }
+        
+        @Override
+        public PlaceDetails[] newArray(int size) {
+            return new PlaceDetails[size];
+        }
+    };
     
     public String getIntPhoneNumber() {
         return intPhoneNumber;
@@ -53,35 +47,26 @@ public class PlaceDetails {
         return priceLevel;
     }
     
-    public String getPlaceName() {
-        return placeName;
-    }
-    
-    public String getPlaceId() {
-        return placeId;
-    }
-    
-    public float getPlaceRating() {
-        return placeRating;
-    }
-    
-    public String getGoogleWebsite() {
-        return googleWebsite;
-    }
     
     public String getBusinessWebsite() {
         return businessWebsite;
-    }
-    
-    public String getVicinity() {
-        return vicinity;
     }
     
     public ArrayList<PlaceReview> getPlaceReview() {
         return placeReview;
     }
     
-    public String[] getTypes() {
-        return types;
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+    
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+    
+        dest.writeString(intPhoneNumber);
+        dest.writeInt(priceLevel);
+        dest.writeString(businessWebsite);
+        dest.writeTypedList(placeReview);
     }
 }

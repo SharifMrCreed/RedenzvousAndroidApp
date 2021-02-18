@@ -101,9 +101,7 @@ public class PlaceFragment extends Fragment {
                 int totalItemCount = nManager.getItemCount();
                 int scrolledItemCount = nManager.findFirstVisibleItemPosition();
                     if ((visibleItemCount + scrolledItemCount)>= totalItemCount) {
-                        if(i<= ApiParams.types.length){
-                            fetchData(ApiParams.types[i]);
-                        }
+                        //TODO: stuff
                         
                     }
                 
