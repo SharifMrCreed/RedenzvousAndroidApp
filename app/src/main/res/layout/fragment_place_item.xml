@@ -86,48 +86,62 @@
                 app:drawableLeftCompat="@drawable/location_icon"
                 app:drawableStartCompat="@drawable/location_icon" />
 
-            <TextView
-                android:id="@+id/tv_phone_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="4dp"
-                android:text="Phone Number"
-                app:drawableStartCompat="@drawable/phone_icon"
-                android:focusable="true"
-                android:clickable="true"
-                android:textColor="@color/highlight"
-                android:textSize="18sp"
-                app:drawableLeftCompat="@drawable/phone_icon"
-                 />
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal"
+               android:layout_marginTop="12dp"
+               android:layout_marginBottom="4dp"
+               android:weightSum="3">
+               <com.google.android.material.textview.MaterialTextView
+                   android:id="@+id/tv_phone_number"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:clickable="true"
+                   android:drawablePadding="4dp"
+                   android:elevation="4dp"
+                   android:drawableTint="@color/colorPrimaryDark"
+                   android:focusable="true"
+                   android:gravity="center"
+                   android:text="Phone Number"
+                   android:textColor="@color/highlight"
+                   android:textSize="18sp"
+                   app:drawableTopCompat="@drawable/phone_icon" />
 
-            <TextView
-                android:id="@+id/tv_open_map"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="4dp"
-                android:drawableTint="@color/colorPrimaryDark"
-                android:textColor="@color/highlight"
-                android:text="See on Map"
-                android:focusable="true"
-                android:clickable="true"
-                android:textSize="18sp"
-                app:drawableLeftCompat="@drawable/map_icon"
-                app:drawableStartCompat="@drawable/map_icon" />
+               <TextView
+                   android:id="@+id/tv_open_map"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:drawablePadding="4dp"
+                   android:gravity="center"
+                   android:layout_weight="1"
+                   android:elevation="4dp"
+                   android:drawableTint="@color/colorPrimaryDark"
+                   android:textColor="@color/highlight"
+                   android:text="See on Map"
+                   android:focusable="true"
+                   android:clickable="true"
+                   android:textSize="18sp"
+                   android:drawableTop="@drawable/map_icon" />
 
-            <TextView
-                android:id="@+id/tv_website"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="4dp"
-                android:drawableTint="@color/colorPrimaryDark"
-                android:textColor="@color/highlight"
-                android:text="Website"
-                android:maxLines="1"
-                android:focusable="true"
-                android:clickable="true"
-                android:textSize="18sp"
-                app:drawableLeftCompat="@drawable/link_icon"
-                app:drawableStartCompat="@drawable/link_icon" />
+               <TextView
+                   android:id="@+id/tv_website"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:drawablePadding="4dp"
+                   android:layout_weight="1"
+                   android:gravity="center"
+                   android:elevation="4dp"
+                   android:drawableTint="@color/colorPrimaryDark"
+                   android:textColor="@color/highlight"
+                   android:text="Website"
+                   android:maxLines="1"
+                   android:focusable="true"
+                   android:clickable="true"
+                   android:textSize="18sp"
+                   app:drawableTopCompat="@drawable/link_icon" />
+           </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
